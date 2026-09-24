@@ -1,10 +1,19 @@
+const DESKTOP_RUN = "https://github.com/oghenenoghie/desktop_plutus_hr-frontend/actions/runs/35613393942";
+
 /**
  * cloud: sign-in page of the Vercel production deployment (project `hr-payroll-wagebook`).
- * download: latest GitHub release of the Electron desktop build (desktop_plutus_hr-frontend).
+ * download: the Desktop section, where visitors pick an installer for their OS.
+ * desktop: installers from the "Build desktop app" workflow, run 13 (2026-09-21). These are
+ * GitHub Actions artifacts: they need a GitHub sign-in to download and expire on 2026-12-20.
  */
 export const LINKS = {
   cloud: "https://hr-payroll-wagebook.vercel.app/login",
-  download: "https://github.com/oghenenoghie/desktop_plutus_hr-frontend/releases/latest",
+  download: "/#editions",
+  desktop: {
+    windows: `${DESKTOP_RUN}/artifacts/10644994123`,
+    mac: `${DESKTOP_RUN}/artifacts/10644988786`,
+    linux: `${DESKTOP_RUN}/artifacts/10644948670`,
+  },
 } as const;
 
 export const SITE = {
