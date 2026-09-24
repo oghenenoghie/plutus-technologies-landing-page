@@ -49,10 +49,20 @@ const EDITIONS = [
       "The same statutory calculations as Plutus Cloud",
     ],
     primary: (
-      <ButtonLink href={LINKS.download}>
-        <Icon name="down" />
-        Download Desktop
-      </ButtonLink>
+      <>
+        <ButtonLink href={LINKS.desktop.windows}>
+          <Icon name="down" />
+          Windows
+        </ButtonLink>
+        <ButtonLink variant="line" href={LINKS.desktop.mac}>
+          <Icon name="down" />
+          macOS
+        </ButtonLink>
+        <ButtonLink variant="line" href={LINKS.desktop.linux}>
+          <Icon name="down" />
+          Linux
+        </ButtonLink>
+      </>
     ),
     secondary: (
       <ButtonLink variant="line" href="#contact">
