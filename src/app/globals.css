@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+/* Letterhead brand tokens. Light by default, dark via system preference or data-theme. */
+:root {
+  color-scheme: light;
+  --paper: #fdfcfa;
+  --surface: #ffffff;
+  --sunk: #f5f3ee;
+  --ink: #0b0c0e;
+  --ink-2: #34343a;
+  --ink-soft: #66635c;
+  --line: #e6e2d8;
+  --line-strong: #cfc9bb;
+  --gold: #dea12f;
+  --gold-text: #8a5e0f;
+  --gold-tint: #fbf1dc;
+  --on-gold: #0b0c0e;
+  --deep: #0b0c0e;
+  --deep-2: #131416;
+  --deep-ink: #f3efe6;
+  --deep-soft: #a39e92;
+  --deep-line: #2b2a27;
+  --good: #1d7444;
+  --good-tint: #e2f1e7;
+  --warn: #935600;
+  --warn-tint: #faebd0;
+  --bad: #ae372f;
+  --bad-tint: #f8e0dc;
+
+  --f-mark: var(--font-cinzel), "Trajan Pro", Georgia, serif;
+  --f-display: var(--font-cormorant), "Cormorant", Georgia, "Times New Roman", serif;
+  --f-body: var(--font-nunito), "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #0c0d0f;
+    --surface: #131417;
+    --sunk: #18191c;
+    --ink: #f2eee6;
+    --ink-2: #d3cfc6;
+    --ink-soft: #9e998e;
+    --line: #26272a;
+    --line-strong: #3b3b3e;
+    --gold: #e2aa3c;
+    --gold-text: #e8b654;
+    --gold-tint: #2a2211;
+    --deep: #08090a;
+    --deep-2: #111214;
+    --deep-line: #25262a;
+    --good: #62c28e;
+    --good-tint: #11281b;
+    --warn: #e6a94c;
+    --warn-tint: #2c2111;
+    --bad: #ef8479;
+    --bad-tint: #2f1715;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0c0d0f;
+  --surface: #131417;
+  --sunk: #18191c;
+  --ink: #f2eee6;
+  --ink-2: #d3cfc6;
+  --ink-soft: #9e998e;
+  --line: #26272a;
+  --line-strong: #3b3b3e;
+  --gold: #e2aa3c;
+  --gold-text: #e8b654;
+  --gold-tint: #2a2211;
+  --deep: #08090a;
+  --deep-2: #111214;
+  --deep-line: #25262a;
+  --good: #62c28e;
+  --good-tint: #11281b;
+  --warn: #e6a94c;
+  --warn-tint: #2c2111;
+  --bad: #ef8479;
+  --bad-tint: #2f1715;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-sunk: var(--sunk);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-gold: var(--gold);
+  --color-gold-text: var(--gold-text);
+  --color-gold-tint: var(--gold-tint);
+  --color-on-gold: var(--on-gold);
+  --color-deep: var(--deep);
+  --color-deep-2: var(--deep-2);
+  --color-deep-ink: var(--deep-ink);
+  --color-deep-soft: var(--deep-soft);
+  --color-deep-line: var(--deep-line);
+  --color-good: var(--good);
+  --color-good-tint: var(--good-tint);
+  --color-warn: var(--warn);
+  --color-warn-tint: var(--warn-tint);
+  --color-bad: var(--bad);
+  --color-bad-tint: var(--bad-tint);
+
+  --font-mark: var(--f-mark);
+  --font-display: var(--f-display);
+  --font-sans: var(--f-body);
+  --font-mono: var(--f-mono);
+
+  --radius-chip: 6px;
+  --radius-btn: 10px;
+  --radius-card: 14px;
+
+  --breakpoint-nav: 1180px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .wrap {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 40px);
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-text);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    flex: none;
+    background: var(--gold);
+  }
+  .deep .eyebrow {
+    color: var(--gold);
+  }
+
+  .h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(34px, 4.4vw, 56px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+  }
+
+  .lede {
+    font-size: clamp(17px, 1.5vw, 19px);
+    color: var(--ink-2);
+    max-width: 62ch;
+  }
+  .deep .lede {
+    color: var(--deep-soft);
+  }
+
+  .gold-list {
+    display: grid;
+    border-top: 1px solid var(--line);
+  }
+  .gold-list > li {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14.5px;
+  }
+  .gold-list > li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    flex: none;
+    background: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  /* The one load animation: a staggered rise in the hero. */
+  .rise {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
