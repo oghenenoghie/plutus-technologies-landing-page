@@ -20,7 +20,8 @@ npm run build
 
 ## Before launch
 
-- Set `LINKS.cloud` and `LINKS.download` in `src/lib/site.ts`. They currently point to the editions section.
+- `LINKS.cloud` points to `https://hr-payroll-wagebook.vercel.app/login`. Move it to a custom domain (for example `app.plutusng.com`) and make sure Vercel Deployment Protection does not put a Vercel login in front of visitors.
+- `LINKS.download` points to the latest GitHub release of `desktop_plutus_hr-frontend`. Publish a release with the installers attached. The desktop build workflow only uploads Actions artifacts, and those need a GitHub sign-in to download.
 - Confirm which of the 27 modules are live and which are roadmap. The feature map currently says "in scope".
 - Add a real demo-request endpoint (Route Handler → email/CRM) before turning the contact block into a form.
 - Re-confirm the scheme-matrix deadlines against primary agency guidance.

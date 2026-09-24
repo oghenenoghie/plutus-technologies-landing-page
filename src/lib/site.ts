@@ -1,10 +1,10 @@
 /**
- * Replace with the live URLs for the cloud app and the desktop installer page before launch.
- * Until then both CTAs route to the editions section rather than a placeholder link.
+ * cloud: sign-in page of the Vercel production deployment (project `hr-payroll-wagebook`).
+ * download: latest GitHub release of the Electron desktop build (desktop_plutus_hr-frontend).
  */
 export const LINKS = {
-  cloud: "/#editions",
-  download: "/#editions",
+  cloud: "https://hr-payroll-wagebook.vercel.app/login",
+  download: "https://github.com/oghenenoghie/desktop_plutus_hr-frontend/releases/latest",
 } as const;
 
 export const SITE = {
