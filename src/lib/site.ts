@@ -8,10 +8,10 @@ const DESKTOP_RELEASE = "https://github.com/oghenenoghie/desktop_plutus_hr-front
  * change here as long as the file names (electron-builder.yml `artifactName`) stay the same.
  */
 /**
- * Off until desktop_plutus_hr-frontend has a published release carrying the installers below;
- * until then the Windows/macOS/Linux buttons render disabled instead of linking to a 404.
+ * On since desktop_plutus_hr-frontend published its first release (desktop-v0.1.0-build.18) with the
+ * installers below. Set to false to grey out the Windows/macOS/Linux buttons if the release is pulled.
  */
-export const DESKTOP_DOWNLOADS_ENABLED = false;
+export const DESKTOP_DOWNLOADS_ENABLED = true;
 
 export const LINKS = {
   cloud: "https://hr-payroll-wagebook.vercel.app/login",
