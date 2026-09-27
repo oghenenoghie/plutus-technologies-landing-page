@@ -3,7 +3,7 @@ import { SectionHead, sectionClass } from "@/components/section-head";
 import { ArrowIcon, ButtonLink } from "@/components/ui/button";
 import { Pill } from "@/components/ui/pill";
 import { NG_2026_1 } from "@/lib/compliance/ng-2026-1";
-import { LINKS } from "@/lib/site";
+import { DESKTOP_DOWNLOADS_ENABLED, LINKS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function EditionIcon({ name, className }: { name: IconName; className?: string }) {
@@ -50,15 +50,15 @@ const EDITIONS = [
     ],
     primary: (
       <>
-        <ButtonLink href={LINKS.desktop.windows}>
+        <ButtonLink href={LINKS.desktop.windows} disabled={!DESKTOP_DOWNLOADS_ENABLED}>
           <Icon name="down" />
           Windows
         </ButtonLink>
-        <ButtonLink variant="line" href={LINKS.desktop.mac}>
+        <ButtonLink variant="line" href={LINKS.desktop.mac} disabled={!DESKTOP_DOWNLOADS_ENABLED}>
           <Icon name="down" />
           macOS
         </ButtonLink>
-        <ButtonLink variant="line" href={LINKS.desktop.linux}>
+        <ButtonLink variant="line" href={LINKS.desktop.linux} disabled={!DESKTOP_DOWNLOADS_ENABLED}>
           <Icon name="down" />
           Linux
         </ButtonLink>
