@@ -16,10 +16,21 @@ export const buttonVariants = cva(
   },
 );
 
-type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & VariantProps<typeof buttonVariants>;
+type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> &
+  VariantProps<typeof buttonVariants> & { disabled?: boolean };
 
-export function ButtonLink({ className, variant, ...props }: ButtonLinkProps) {
-  return <a className={cn(buttonVariants({ variant }), className)} {...props} />;
+export function ButtonLink({ className, variant, disabled, href, ...props }: ButtonLinkProps) {
+  if (disabled) {
+    // No href: a disabled link is not focusable or followable.
+    return (
+      <a
+        aria-disabled="true"
+        className={cn(buttonVariants({ variant }), "pointer-events-none cursor-not-allowed opacity-50", className)}
+        {...props}
+      />
+    );
+  }
+  return <a href={href} className={cn(buttonVariants({ variant }), className)} {...props} />;
 }
 
 /** Arrow that nudges right on hover of the parent button. */
