@@ -1,18 +1,19 @@
-const DESKTOP_RUN = "https://github.com/oghenenoghie/desktop_plutus_hr-frontend/actions/runs/35966268731";
+const DESKTOP_RELEASE = "https://github.com/oghenenoghie/desktop_plutus_hr-frontend/releases/latest/download";
 
 /**
  * cloud: sign-in page of the Vercel production deployment (project `hr-payroll-wagebook`).
  * download: the Desktop section, where visitors pick an installer for their OS.
- * desktop: installers from the "Build desktop app" workflow, run 17 (2026-09-24). These are
- * GitHub Actions artifacts: they need a GitHub sign-in to download and expire on 2026-12-23.
+ * desktop: installers attached to the latest public GitHub release of desktop_plutus_hr-frontend.
+ * `releases/latest/download/<name>` always resolves to the newest release, so new builds need no
+ * change here as long as the file names (electron-builder.yml `artifactName`) stay the same.
  */
 export const LINKS = {
   cloud: "https://hr-payroll-wagebook.vercel.app/login",
   download: "/#editions",
   desktop: {
-    windows: `${DESKTOP_RUN}/artifacts/10794213398`,
-    mac: `${DESKTOP_RUN}/artifacts/10794477083`,
-    linux: `${DESKTOP_RUN}/artifacts/10794825311`,
+    windows: `${DESKTOP_RELEASE}/Plutus-Technologies-Setup.exe`,
+    mac: `${DESKTOP_RELEASE}/Plutus-Technologies-mac.dmg`,
+    linux: `${DESKTOP_RELEASE}/Plutus-Technologies-linux.AppImage`,
   },
 } as const;
 
