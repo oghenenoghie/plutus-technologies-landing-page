@@ -7,6 +7,12 @@ const DESKTOP_RELEASE = "https://github.com/oghenenoghie/desktop_plutus_hr-front
  * `releases/latest/download/<name>` always resolves to the newest release, so new builds need no
  * change here as long as the file names (electron-builder.yml `artifactName`) stay the same.
  */
+/**
+ * Off until desktop_plutus_hr-frontend has a published release carrying the installers below;
+ * until then the Windows/macOS/Linux buttons render disabled instead of linking to a 404.
+ */
+export const DESKTOP_DOWNLOADS_ENABLED = false;
+
 export const LINKS = {
   cloud: "https://hr-payroll-wagebook.vercel.app/login",
   download: "/#editions",
