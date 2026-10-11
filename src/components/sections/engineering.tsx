@@ -1,12 +1,12 @@
 import { SectionHead, sectionClass } from "@/components/section-head";
 
 const DECISIONS = [
-  ["rules / effective-dated", "Rules are data, not code", "Rates, reliefs and thresholds live in one versioned rule set. No figures are buried in calculation logic."],
-  ["history / reproducible", "Every past run can be replayed", "Historical pay runs are recalculated against the rule version that was in force on their date."],
-  ["ledger / append-only", "Nothing is quietly overwritten", "Financial and statutory records are append-only. Corrections are new entries with their own audit trail."],
-  ["money / integer kobo", "Exact money, no float rounding", "Amounts are stored as whole kobo. Payslips reconcile to the naira, month after month."],
-  ["access / row-level", "Role separation in the database", "Admin, payroll manager, HR manager and employee permissions are enforced where the data lives."],
-  ["auth / MFA", "MFA for anyone who moves money", "Multi-factor sign-in is required for admins and payroll managers, with every action logged."],
+  ["rules / effective-dated", "Tax rules are data, not code", "VAT, WHT, CIT and levy rates live in one versioned rule set. No rate is buried in posting logic."],
+  ["ledger / double-entry", "Every post balances, or it does not post", "Debits must equal credits before an entry is written, enforced by the database. Nothing is parked in suspense."],
+  ["ledger / append-only", "Nothing is quietly overwritten", "Posted entries are never edited. Corrections are reversing entries with their own audit trail."],
+  ["money / integer kobo", "Exact money, no float rounding", "Amounts are stored as whole kobo. The trial balance reconciles to the kobo, month after month."],
+  ["access / row-level", "Role separation in the database", "Owner, finance manager, accounts officer and auditor permissions are enforced where the data lives."],
+  ["auth / MFA", "MFA for anyone who moves money", "Multi-factor sign-in is required for owners and finance managers, with every action logged."],
 ] as const;
 
 export function Engineering() {

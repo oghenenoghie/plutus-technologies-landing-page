@@ -5,6 +5,9 @@
  * effective 1 January 2026. Stand-in for `packages/compliance` until the site can import the
  * engine's rule set directly, so the site and the engine share one source of truth.
  * Do not edit a figure here without a matching change to the statutory reference.
+ *
+ * The statutory reference covers payroll and WHT. VAT, company income tax and the development
+ * levy below are not in it yet: add them there and re-confirm against NRS guidance before launch.
  */
 
 export type PayeBand = {
@@ -18,6 +21,15 @@ export type Scheme = {
   base: string;
   rate: string;
   borneBy: "Employee" | "Employer" | "Both" | "Contractor";
+  remitTo: string;
+  deadline: string;
+};
+
+export type Tax = {
+  name: string;
+  base: string;
+  rate: string;
+  postsTo: string;
   remitTo: string;
   deadline: string;
 };
@@ -41,6 +53,59 @@ export const NG_2026_1 = {
   rentRelief: { rate: 0.2, cap: 500_000 },
   pension: { employeeRate: 0.08, employerRate: 0.1 },
   nhf: { rate: 0.025 },
+
+  vat: { rate: 0.075 },
+  /** WHT is resolved by transaction category. These are the common rates, used for illustration only. */
+  wht: { illustrativeRates: [0.05, 0.1] },
+  cit: {
+    rate: 0.3,
+    smallCompany: { rate: 0, turnoverMax: 100_000_000, fixedAssetsMax: 250_000_000 },
+  },
+  developmentLevy: { rate: 0.04 },
+
+  /** Business taxes the ledger calculates, posts and tracks. */
+  taxes: [
+    {
+      name: "VAT",
+      base: "Taxable supplies, less input VAT",
+      rate: "7.5%",
+      postsTo: "VAT output and VAT input",
+      remitTo: "NRS",
+      deadline: "21st of following month",
+    },
+    {
+      name: "WHT",
+      base: "Qualifying payments, excluding VAT",
+      rate: "By category",
+      postsTo: "WHT payable and WHT receivable",
+      remitTo: "NRS / State IRS",
+      deadline: "21st of following month",
+    },
+    {
+      name: "CIT",
+      base: "Assessable profits",
+      rate: "0% small / 30%",
+      postsTo: "Income tax payable",
+      remitTo: "NRS",
+      deadline: "Within 6 months of year end",
+    },
+    {
+      name: "Development levy",
+      base: "Assessable profits",
+      rate: "4%",
+      postsTo: "Development levy payable",
+      remitTo: "NRS",
+      deadline: "With the CIT return",
+    },
+    {
+      name: "PAYE",
+      base: "Employee chargeable income",
+      rate: "0–25%",
+      postsTo: "PAYE payable",
+      remitTo: "State IRS of residence",
+      deadline: "10th of following month",
+    },
+  ] satisfies Tax[],
 
   schemes: [
     {

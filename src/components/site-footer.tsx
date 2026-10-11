@@ -2,7 +2,7 @@ import { Logo } from "@/components/logo";
 
 const LINKS = [
   ["#product", "Product"],
-  ["#compliance", "Compliance"],
+  ["#compliance", "Tax engine"],
   ["#editions", "Cloud & Desktop"],
   ["#security", "Security"],
   ["#pricing", "Pricing"],
