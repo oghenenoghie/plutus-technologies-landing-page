@@ -27,7 +27,7 @@ export const SITE = {
   name: "Plutus Technologies",
   url: "https://www.plutusng.com",
   description:
-    "The compliance-native HR and payroll platform for Nigeria and Africa. PAYE, pension, NHF, NHIS, NSITF, ITF and WHT from a versioned rule set, in Cloud and Desktop editions.",
+    "The compliance-native accounting platform for Nigeria and Africa. Double-entry books with VAT, withholding tax, company income tax and the development levy from a versioned rule set, in Cloud and Desktop editions.",
 } as const;
 
 export const CONTACT = {
@@ -52,7 +52,7 @@ export const CONTACT = {
 
 export const NAV = [
   { href: "#product", label: "Product" },
-  { href: "#compliance", label: "Compliance" },
+  { href: "#compliance", label: "Tax engine" },
   { href: "#editions", label: "Cloud & Desktop" },
   { href: "#roles", label: "Who it's for" },
   { href: "#pricing", label: "Pricing" },

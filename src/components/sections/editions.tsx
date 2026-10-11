@@ -22,9 +22,9 @@ const EDITIONS = [
     body: "The full platform in the browser, for teams that work across offices and states.",
     items: [
       "Sign in from any browser, no installation",
-      "Role-based access with MFA for admins and payroll managers",
-      "Bank disbursement files and accounting journal sync",
-      "Employee self-service for payslips, leave and claims",
+      "Role-based access with MFA for owners and finance managers",
+      "Bank statement import and reconciliation",
+      "Read-only access for your external accountant or auditor",
     ],
     primary: (
       <ButtonLink href={LINKS.cloud}>
@@ -41,12 +41,12 @@ const EDITIONS = [
     name: "Desktop",
     icon: "desk" as const,
     pill: <Pill tone="gold">Offline</Pill>,
-    body: "An installed application that runs without an internet connection. Payroll keeps working when the network does not.",
+    body: "An installed application that runs without an internet connection. The books keep working when the network does not.",
     items: [
-      "No internet connection required to run payroll",
-      "Payroll data stays on your own machine",
+      "No internet connection required to keep the books",
+      "Financial data stays on your own machine",
       "Built-in database, sign-in and scheduler",
-      "The same statutory calculations as Plutus Cloud",
+      "The same tax calculations and reports as Plutus Cloud",
     ],
     primary: (
       <>
@@ -77,8 +77,8 @@ export function Editions() {
     <section id="editions" aria-labelledby="editions-title" className={cn(sectionClass, "bg-sunk")}>
       <div className="wrap">
         <SectionHead eyebrow="Cloud & Desktop" id="editions-title" title="Run Plutus online, or entirely on your own machine.">
-          Both editions run the same compliance engine and rule set. Choose by where your data needs to live and how your
-          office connects.
+          Both editions run the same ledger, tax engine and rule set. Choose by where your financial data needs to live and
+          how your office connects.
         </SectionHead>
         <div className="grid overflow-hidden rounded-card border border-line-strong bg-surface md:grid-cols-2">
           {EDITIONS.map((e, i) => (
@@ -111,7 +111,7 @@ export function Editions() {
           ))}
           <div className="col-span-full flex flex-wrap items-center gap-x-[18px] gap-y-2.5 border-t border-line-strong bg-sunk px-[clamp(24px,3.4vw,40px)] py-[18px] text-sm">
             <b className="text-[11.5px] font-extrabold uppercase tracking-[.14em] text-gold-text">In both</b>
-            <span>{NG_2026_1.schemes.map((s) => s.name).join(" · ")}</span>
+            <span>{NG_2026_1.taxes.map((t) => t.name).join(" · ")}</span>
             <span className="font-mono text-[.82em]">{NG_2026_1.version}</span>
           </div>
         </div>

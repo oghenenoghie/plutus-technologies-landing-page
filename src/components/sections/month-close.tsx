@@ -2,28 +2,28 @@ import { SectionHead, sectionClass } from "@/components/section-head";
 
 const STEPS = [
   {
-    title: "Register the company",
-    body: "RC number, company TIN, pay frequency, default PFA and every state you operate in. This sets which filing schedules apply.",
+    title: "Set up the books",
+    body: "RC number, company TIN, VAT registration, financial year end and opening balances. This sets which taxes and returns apply.",
   },
   {
-    title: "Enrol employees",
-    body: "Pay components, state of residence, TIN and PFA for each person. Each field feeds the calculation that depends on it.",
+    title: "Record the month",
+    body: "Invoices, bills, receipts, payments and pay runs. Each one posts double-entry, with VAT and WHT calculated as it posts.",
   },
   {
-    title: "Run payroll",
-    body: "The engine applies the current rule set, holds anyone without a valid TIN, and shows the derivation behind every payslip.",
+    title: "Reconcile",
+    body: "Bank statements matched line by line, WHT credit notes matched to receipts, and anything unexplained held for review.",
   },
   {
-    title: "File and remit",
-    body: "State-specific PAYE schedules, pension and NHF files, and remittance evidence consolidated across every state.",
+    title: "Close, file and report",
+    body: "Lock the period, file VAT and WHT returns with their schedules, and produce the trial balance and financial statements.",
   },
 ];
 
-export function PayCycle() {
+export function MonthClose() {
   return (
     <section id="how" aria-labelledby="how-title" className={sectionClass}>
       <div className="wrap">
-        <SectionHead eyebrow="How a pay cycle runs" id="how-title" title="From setup to remittance evidence in four steps." />
+        <SectionHead eyebrow="How a month closes" id="how-title" title="From opening balances to filed returns in four steps." />
         <ol className="grid border-t-2 border-ink sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((s, i) => (
             <li

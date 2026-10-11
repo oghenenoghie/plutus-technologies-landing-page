@@ -19,11 +19,11 @@ export function Contact() {
         <div className="grid content-start gap-5">
           <p className="eyebrow">Book a demo</p>
           <h2 className="h2" id="contact-title">
-            See your own payroll run through the engine.
+            See your own books run through the engine.
           </h2>
           <p className="lede">
-            Send us your headcount, the states you operate in and whether you need Cloud or Desktop. We&apos;ll walk you
-            through a pay run built on your structure.
+            Send us your turnover, how many companies you keep books for and whether you need Cloud or Desktop.
+            We&apos;ll walk you through a month-end close built on your chart of accounts.
           </p>
           <div className="mt-8 grid border-t border-deep-line sm:grid-cols-2">
             {CONTACT.offices.map((o, i) => (

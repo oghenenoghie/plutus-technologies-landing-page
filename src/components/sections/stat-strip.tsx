@@ -1,7 +1,10 @@
+import { NG_2026_1 } from "@/lib/compliance/ng-2026-1";
+import { MODULES } from "./platform";
+
 const STATS = [
-  ["7", "statutory schemes calculated and tracked"],
-  ["37", "PAYE jurisdictions: 36 states and the FCT"],
-  ["27", "HR and payroll modules in the platform scope"],
+  [String(NG_2026_1.taxes.length), "taxes calculated, posted and tracked"],
+  ["1", "double-entry ledger behind every invoice, bill and pay run"],
+  [String(MODULES.length), "accounting modules in the platform scope"],
   ["2", "editions: Plutus Cloud and Plutus Desktop"],
 ] as const;
 
@@ -11,7 +14,7 @@ export function StatStrip() {
       <dl className="wrap grid grid-cols-2 md:grid-cols-4">
         {STATS.map(([n, label], i) => (
           <div
-            key={n}
+            key={label}
             className={[
               "grid gap-1 border-line py-[26px]",
               i % 2 === 1 ? "border-l pl-[22px]" : "pr-[22px]",

@@ -4,15 +4,15 @@ import { cn } from "@/lib/utils";
 import { EditionIcon } from "./editions";
 
 const INTEGRATIONS = [
-  { icon: "bank" as const, title: "Bank disbursement", body: "Bulk net-pay files generated as soon as a run is approved." },
-  { icon: "book" as const, title: "Accounting and ERP sync", body: "Payroll journal entries posted to your ledger after every processed run." },
-  { icon: "api" as const, title: "Open APIs and webhooks", body: "Scoped keys for HRIS sync, finance notifications and data-warehouse export." },
+  { icon: "bank" as const, title: "Bank statements", body: "Import statements and match every line to an invoice, bill or journal." },
+  { icon: "book" as const, title: "Payroll journals", body: "Pay runs from Plutus payroll, or from your HR system via the API, post to the ledger as balanced journals." },
+  { icon: "api" as const, title: "Open APIs and webhooks", body: "Scoped keys for ERP sync, online sales and data-warehouse export." },
 ];
 
 const MARKETS = [
-  { name: "Nigeria", schemes: "PAYE · Pension · NHF · NHIS · NSITF · ITF · WHT", status: "Live", tone: "good" as const },
-  { name: "Ghana", schemes: "PAYE · SSNIT pension · Tier 2/3", status: "Roadmap · Q1 2027", tone: "warn" as const },
-  { name: "Kenya", schemes: "PAYE · NSSF · SHIF", status: "Roadmap · Q3 2027", tone: "warn" as const },
+  { name: "Nigeria", schemes: "VAT · WHT · CIT · Development levy · PAYE", status: "Live", tone: "good" as const },
+  { name: "Ghana", schemes: "VAT · Corporate income tax · PAYE", status: "Roadmap · Q1 2027", tone: "warn" as const },
+  { name: "Kenya", schemes: "VAT · Corporate income tax · PAYE", status: "Roadmap · Q3 2027", tone: "warn" as const },
 ];
 
 export function IntegrationsMarkets() {
@@ -21,7 +21,7 @@ export function IntegrationsMarkets() {
       <div className="wrap grid items-start gap-[clamp(32px,5vw,72px)] lg:grid-cols-2">
         <div>
           <p className="eyebrow">Integrations</p>
-          <h2 className="h2 mt-[18px]">Connected to where the money goes.</h2>
+          <h2 className="h2 mt-[18px]">Connected to where the money moves.</h2>
           <div className="mt-7 grid gap-3.5">
             {INTEGRATIONS.map((i) => (
               <div
@@ -57,8 +57,8 @@ export function IntegrationsMarkets() {
             ))}
           </ul>
           <p className="mt-[18px] text-[13px] text-ink-soft">
-            Each new country will add a statutory rule set, not a new platform. Ghana and Kenya rule sets are planned and
-            not yet available.
+            Each new country will add a tax rule set, not a new platform. Ghana and Kenya rule sets are planned and not yet
+            available.
           </p>
         </div>
       </div>

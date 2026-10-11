@@ -8,7 +8,7 @@ import { Editions } from "@/components/sections/editions";
 import { Engineering } from "@/components/sections/engineering";
 import { Hero } from "@/components/sections/hero";
 import { IntegrationsMarkets } from "@/components/sections/integrations-markets";
-import { PayCycle } from "@/components/sections/pay-cycle";
+import { MonthClose } from "@/components/sections/month-close";
 import { Platform } from "@/components/sections/platform";
 import { Pricing } from "@/components/sections/pricing";
 import { Reform } from "@/components/sections/reform";
@@ -17,7 +17,7 @@ import { StatStrip } from "@/components/sections/stat-strip";
 import { SITE } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = "Plutus Technologies · Compliance-native HR & payroll for Nigeria";
+  const title = "Plutus Technologies · Compliance-native accounting for Nigeria";
   return {
     title: { absolute: title },
     description: SITE.description,
@@ -38,7 +38,7 @@ export default function HomePage() {
         <Reform />
         <Platform />
         <ComplianceEngine />
-        <PayCycle />
+        <MonthClose />
         <Editions />
         <Roles />
         <Engineering />
