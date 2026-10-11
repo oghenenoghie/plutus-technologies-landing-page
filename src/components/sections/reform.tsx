@@ -8,7 +8,7 @@ const CHANGES = [
   {
     k: "CIT",
     title: "Small companies pay 0%",
-    body: `Companies with turnover up to ${formatNaira(cit.smallCompany.turnoverMax)} and fixed assets up to ${formatNaira(cit.smallCompany.fixedAssetsMax)} pay no company income tax. Others pay ${pct(cit.rate)}.`,
+    body: `Companies with turnover up to ${formatNaira(cit.smallCompany.turnoverMax)} and fixed assets up to ${formatNaira(cit.smallCompany.fixedAssetsMax)} pay no company income tax. Others pay ${pct(cit.rate)}. Professional services firms do not qualify.`,
   },
   {
     k: "Levy",

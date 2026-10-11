@@ -1,4 +1,5 @@
 import { Logo } from "@/components/logo";
+import { SITE } from "@/lib/site";
 
 const LINKS = [
   ["#product", "Product"],
@@ -24,7 +25,7 @@ export function SiteFooter() {
           </nav>
         </div>
         <div className="flex flex-wrap justify-between gap-x-6 gap-y-3 border-t border-deep-line pt-[22px] text-[12.5px]">
-          <span>© {new Date().getFullYear()} Plutus Technologies. Lagos · Hemel Hempstead.</span>
+          <span>© {new Date().getFullYear()} {SITE.name}. Lagos · Hemel Hempstead.</span>
           <span>Plutus applies statutory rules; it does not provide tax or legal advice.</span>
         </div>
       </div>

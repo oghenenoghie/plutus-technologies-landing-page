@@ -6,8 +6,7 @@
  * engine's rule set directly, so the site and the engine share one source of truth.
  * Do not edit a figure here without a matching change to the statutory reference.
  *
- * The statutory reference covers payroll and WHT. VAT, company income tax and the development
- * levy below are not in it yet: add them there and re-confirm against NRS guidance before launch.
+ * VAT is in §8 of the statutory reference; company income tax and the development levy are in §13.
  */
 
 export type PayeBand = {
@@ -59,6 +58,10 @@ export const NG_2026_1 = {
   wht: { illustrativeRates: [0.05, 0.1] },
   cit: {
     rate: 0.3,
+    /**
+     * ₦100m turnover, the NTAA figure the reform committee says was intended, by owner decision.
+     * NTA s.202 as enacted says ₦50m (statutory reference §13); revisit if the NRS rules otherwise.
+     */
     smallCompany: { rate: 0, turnoverMax: 100_000_000, fixedAssetsMax: 250_000_000 },
   },
   developmentLevy: { rate: 0.04 },
