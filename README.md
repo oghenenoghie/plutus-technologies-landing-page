@@ -24,7 +24,6 @@ npm run build
 - `LINKS.desktop` points to `releases/latest/download/<installer>` on `desktop_plutus_hr-frontend` (`Plutus-Technologies-Setup.exe`, `Plutus-Technologies-mac.dmg`, `Plutus-Technologies-linux.AppImage`). These links work once that repo has a published GitHub release carrying those files, and always serve the newest release.
 - The site now leads with accounting. `LINKS.cloud` and `LINKS.desktop` still point at the HR & payroll app and its installers; repoint them if the accounting product ships separately.
 - VAT (7.5%), CIT (0% small company / 30%, with the ₦100m turnover and ₦250m fixed-asset thresholds), the 4% development levy and their deadlines are not in the Plutus statutory reference yet, which covers payroll and WHT. Add them there and re-confirm against NRS guidance before launch.
-- Confirm the pricing basis. The pricing section now says "per company, per month" instead of per employee.
 - Confirm which of the accounting modules are live and which are roadmap. The feature map currently says "in scope".
 - Add a real demo-request endpoint (Route Handler → email/CRM) before turning the contact block into a form.
 - Re-confirm the tax-matrix deadlines against primary agency guidance.

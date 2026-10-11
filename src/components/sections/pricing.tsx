@@ -29,7 +29,7 @@ export function Pricing() {
   return (
     <section id="pricing" aria-labelledby="pricing-title" className={sectionClass}>
       <div className="wrap">
-        <SectionHead eyebrow="Pricing" id="pricing-title" title="Priced per company, per month.">
+        <SectionHead eyebrow="Pricing" id="pricing-title" title="Priced per employee, per month.">
           Plans are tiered by depth. Every plan includes the full Nigerian tax engine.
         </SectionHead>
         <div className="grid gap-5 lg:grid-cols-3">
@@ -47,7 +47,7 @@ export function Pricing() {
               <h3 className="font-display text-[34px] font-semibold leading-none">{t.title}</h3>
               <div className="border-y border-line py-3 text-[13px] text-ink-soft">
                 <b className="block text-xl font-extrabold text-ink">Talk to sales</b>
-                per company / month
+                per employee / month
               </div>
               <ul className="gold-list self-start">
                 {t.items.map((i) => (
