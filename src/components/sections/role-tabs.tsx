@@ -26,7 +26,7 @@ const ROLES: Role[] = [
     name: "Owner",
     mfa: true,
     blurb: "Cash, profit and tax exposure across every company.",
-    path: "app.plutusng.com/overview",
+    path: "app.plutusbiztech.com/overview",
     title: "Overview",
     sub: "Cash, receivables and tax due at a glance",
     kv: [
@@ -46,7 +46,7 @@ const ROLES: Role[] = [
     name: "Finance Manager",
     mfa: true,
     blurb: "Journals, reconciliation, period close and tax returns.",
-    path: "app.plutusng.com/close",
+    path: "app.plutusbiztech.com/close",
     title: "Month-end close · March 2026",
     sub: "Reconcile, review and lock the period",
     kv: [
@@ -66,7 +66,7 @@ const ROLES: Role[] = [
     name: "Accounts Officer",
     mfa: false,
     blurb: "Invoices, bills, receipts and payments.",
-    path: "app.plutusng.com/receivables",
+    path: "app.plutusbiztech.com/receivables",
     title: "Receivables",
     sub: "Invoices, receipts and WHT credit notes",
     kv: [
@@ -86,7 +86,7 @@ const ROLES: Role[] = [
     name: "Auditor",
     mfa: false,
     blurb: "Read-only books, with every entry traced to its source.",
-    path: "app.plutusng.com/audit",
+    path: "app.plutusbiztech.com/audit",
     title: "Audit trail · FY2025",
     sub: "Read-only",
     kv: [

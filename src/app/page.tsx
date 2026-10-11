@@ -17,7 +17,7 @@ import { StatStrip } from "@/components/sections/stat-strip";
 import { SITE } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = "Plutus Technologies · Compliance-native accounting for Nigeria";
+  const title = `${SITE.name} · Compliance-native accounting for Nigeria`;
   return {
     title: { absolute: title },
     description: SITE.description,

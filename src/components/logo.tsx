@@ -1,3 +1,4 @@
+import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 /** Lockup: P mark, 1px gold rule, PLUTUS wordmark over the letterhead strapline. */
@@ -6,7 +7,7 @@ export function Logo({ tone = "paper", className }: { tone?: "paper" | "deep"; c
   return (
     <a
       href="#top"
-      aria-label="Plutus Technologies, home"
+      aria-label={`${SITE.name}, home`}
       className={cn("flex flex-none items-center gap-3.5 no-underline", deep ? "text-deep-ink" : "text-ink", className)}
     >
       <svg viewBox="0 0 108 132" className="h-auto w-[30px]" aria-hidden="true">

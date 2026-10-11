@@ -1,6 +1,6 @@
-# Plutus Technologies — marketing site
+# PlutusBiztech — marketing site
 
-Public site for plutusng.com, which sells the Plutus accounting platform (double-entry books with VAT, WHT, CIT and the development levy, plus payroll as a module) in **Cloud** and **Desktop** editions.
+Public site for plutusbiztech.com, which sells the Plutus accounting platform (double-entry books with VAT, WHT, CIT and the development levy, plus payroll as a module) in **Cloud** and **Desktop** editions.
 Next.js App Router, Tailwind CSS v4 and shadcn/ui conventions, using the letterhead brand (black, gold, serif wordmark).
 
 ```bash
@@ -20,7 +20,7 @@ npm run build
 
 ## Before launch
 
-- `LINKS.cloud` points to `https://hr-payroll-wagebook.vercel.app/login`. Move it to a custom domain (for example `app.plutusng.com`) and make sure Vercel Deployment Protection does not put a Vercel login in front of visitors.
+- `LINKS.cloud` points to `https://hr-payroll-wagebook.vercel.app/login`. Move it to a custom domain (for example `app.plutusbiztech.com`) and make sure Vercel Deployment Protection does not put a Vercel login in front of visitors.
 - `LINKS.desktop` points to `releases/latest/download/<installer>` on `desktop_plutus_hr-frontend` (`Plutus-Technologies-Setup.exe`, `Plutus-Technologies-mac.dmg`, `Plutus-Technologies-linux.AppImage`). These links work once that repo has a published GitHub release carrying those files, and always serve the newest release.
 - The site now leads with accounting. `LINKS.cloud` and `LINKS.desktop` still point at the HR & payroll app and its installers; repoint them if the accounting product ships separately.
 - VAT (7.5%), CIT (0% small company / 30%, with the ₦100m turnover and ₦250m fixed-asset thresholds), the 4% development levy and their deadlines are not in the Plutus statutory reference yet, which covers payroll and WHT. Add them there and re-confirm against NRS guidance before launch.
