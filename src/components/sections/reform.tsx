@@ -1,6 +1,6 @@
 import { SectionHead, sectionClass } from "@/components/section-head";
 import { NG_2026_1 } from "@/lib/compliance/ng-2026-1";
-import { formatNaira, pct } from "@/lib/money";
+import { pct } from "@/lib/money";
 
 const { cit, developmentLevy } = NG_2026_1;
 
@@ -8,7 +8,7 @@ const CHANGES = [
   {
     k: "CIT",
     title: "Small companies pay 0%",
-    body: `Companies with turnover up to ${formatNaira(cit.smallCompany.turnoverMax)} and fixed assets up to ${formatNaira(cit.smallCompany.fixedAssetsMax)} pay no company income tax. Others pay ${pct(cit.rate)}.`,
+    body: `Companies under the small-company limits on turnover and fixed assets pay no company income tax. Others pay ${pct(cit.rate)}. Professional services firms do not qualify.`,
   },
   {
     k: "Levy",

@@ -23,7 +23,7 @@ npm run build
 - `LINKS.cloud` points to `https://hr-payroll-wagebook.vercel.app/login`. Move it to a custom domain (for example `app.plutusbiztech.com`) and make sure Vercel Deployment Protection does not put a Vercel login in front of visitors.
 - `LINKS.desktop` points to `releases/latest/download/<installer>` on `desktop_plutus_hr-frontend` (`Plutus-Technologies-Setup.exe`, `Plutus-Technologies-mac.dmg`, `Plutus-Technologies-linux.AppImage`). These links work once that repo has a published GitHub release carrying those files, and always serve the newest release.
 - The site now leads with accounting. `LINKS.cloud` and `LINKS.desktop` still point at the HR & payroll app and its installers; repoint them if the accounting product ships separately.
-- VAT (7.5%), CIT (0% small company / 30%, with the ₦100m turnover and ₦250m fixed-asset thresholds), the 4% development levy and their deadlines are not in the Plutus statutory reference yet, which covers payroll and WHT. Add them there and re-confirm against NRS guidance before launch.
+- VAT, CIT and the development levy are now in the statutory reference (§8 and §13). The small-company turnover limit is disputed: the Nigeria Tax Act says ₦50m, the Tax Administration Act and the reform committee say ₦100m. The site does not quote a turnover figure until the NRS settles it.
 - Confirm which of the accounting modules are live and which are roadmap. The feature map currently says "in scope".
 - Add a real demo-request endpoint (Route Handler → email/CRM) before turning the contact block into a form.
 - Re-confirm the tax-matrix deadlines against primary agency guidance.
