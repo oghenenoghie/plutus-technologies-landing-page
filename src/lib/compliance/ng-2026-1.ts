@@ -59,10 +59,10 @@ export const NG_2026_1 = {
   cit: {
     rate: 0.3,
     /**
-     * NTA s.202 as enacted. The NTAA and the reform committee put the turnover limit at ₦100m; until
-     * the NRS settles it, the reference says not to quote a single turnover figure to clients.
+     * ₦100m turnover, the NTAA figure the reform committee says was intended, by owner decision.
+     * NTA s.202 as enacted says ₦50m (statutory reference §13); revisit if the NRS rules otherwise.
      */
-    smallCompany: { rate: 0, turnoverMax: 50_000_000, fixedAssetsMax: 250_000_000 },
+    smallCompany: { rate: 0, turnoverMax: 100_000_000, fixedAssetsMax: 250_000_000 },
   },
   developmentLevy: { rate: 0.04 },
 
