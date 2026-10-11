@@ -7,14 +7,14 @@ import { LINKS, NAV } from "@/lib/site";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper">
-      <div className="wrap flex min-h-[76px] items-center gap-7">
+      <div className="wrap flex min-h-[76px] items-center gap-6">
         <Logo />
         <nav aria-label="Primary" className="ml-auto hidden gap-1 nav:flex">
           {NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="relative whitespace-nowrap rounded-lg px-3 py-2 text-[14.5px] font-bold text-ink-2 no-underline after:absolute after:inset-x-3 after:bottom-[3px] after:h-[1.5px] after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-200 hover:text-ink hover:after:scale-x-100"
+              className="relative whitespace-nowrap rounded-lg px-2 py-2 text-[14px] font-bold text-ink-2 no-underline after:absolute after:inset-x-2 after:bottom-[3px] after:h-[1.5px] after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-200 hover:text-ink hover:after:scale-x-100"
             >
               {item.label}
             </a>
