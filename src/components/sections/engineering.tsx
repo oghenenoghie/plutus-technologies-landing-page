@@ -5,8 +5,8 @@ const DECISIONS = [
   ["ledger / double-entry", "Every post balances, or it does not post", "Debits must equal credits before an entry is written, enforced by the database. Nothing is parked in suspense."],
   ["ledger / append-only", "Nothing is quietly overwritten", "Posted entries are never edited. Corrections are reversing entries with their own audit trail."],
   ["money / integer kobo", "Exact money, no float rounding", "Amounts are stored as whole kobo. The trial balance reconciles to the kobo, month after month."],
-  ["access / row-level", "Role separation in the database", "Owner, finance manager, accounts officer and auditor permissions are enforced where the data lives."],
-  ["auth / MFA", "MFA for anyone who moves money", "Multi-factor sign-in is required for owners and finance managers, with every action logged."],
+  ["access / row-level", "Role separation in the database", "Eight roles, from Super Admin to Employee, with permissions enforced where the data lives."],
+  ["auth / MFA", "Multi-factor sign-in for every role", "Any user can turn on an authenticator app, and every action is written to the audit trail."],
 ] as const;
 
 export function Engineering() {

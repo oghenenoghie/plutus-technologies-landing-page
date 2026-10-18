@@ -1,10 +1,10 @@
 import { NG_2026_1 } from "@/lib/compliance/ng-2026-1";
-import { MODULES } from "./platform";
+import { MODULE_COUNT } from "./platform";
 
 const STATS = [
   [String(NG_2026_1.taxes.length), "taxes calculated, posted and tracked"],
-  ["1", "double-entry ledger behind every invoice, bill and pay run"],
-  [String(MODULES.length), "accounting modules in the platform scope"],
+  ["1", "double-entry ledger behind every invoice, bill, stock movement and pay run"],
+  [String(MODULE_COUNT), "screens across accounts, inventory, payroll and HR"],
   ["2", "editions: Plutus Cloud and Plutus Desktop"],
 ] as const;
 

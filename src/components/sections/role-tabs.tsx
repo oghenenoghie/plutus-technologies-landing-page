@@ -9,7 +9,7 @@ type Tone = "good" | "warn" | "bad" | "mute";
 type Role = {
   id: string;
   name: string;
-  mfa: boolean;
+  tag?: string;
   blurb: string;
   path: string;
   title: string;
@@ -19,19 +19,20 @@ type Role = {
   perms: string[];
 };
 
-// Sample data only. INV-0412 follows the hero default (₦2.4m + 7.5% VAT); the VAT return matches the tax engine panel.
+// Sample data only. Role names are the app's own. INV-0412 follows the hero default (₦2.4m + 7.5% VAT);
+// the VAT return matches the tax engine panel.
 const ROLES: Role[] = [
   {
-    id: "owner",
-    name: "Owner",
-    mfa: true,
-    blurb: "Cash, profit and tax exposure across every company.",
-    path: "app.plutusbiztech.com/overview",
+    id: "admin",
+    name: "Super Admin",
+    tag: "Full access",
+    blurb: "Company setup, permissions, approval workflows and every ledger.",
+    path: "app.plutusng.com/overview",
     title: "Overview",
-    sub: "Cash, receivables and tax due at a glance",
+    sub: "Cash, receivables, stock and tax due at a glance",
     kv: [
       ["Cash at bank", "₦38.2m"],
-      ["Receivables", "₦12.6m"],
+      ["Stock value", "₦18.7m"],
       ["Returns due", "3"],
     ],
     rows: [
@@ -39,14 +40,13 @@ const ROLES: Role[] = [
       ["WHT remittance · March", "21 Apr", "warn", "Due"],
       ["PAYE · Lagos IRS", "10 Apr", "good", "Filed"],
     ],
-    perms: ["Company setup", "All ledgers", "Payment approvals", "Reports", "Integrations & security"],
+    perms: ["Setup & onboarding", "Permissions", "Approval workflows", "Integrations", "Security", "Subscription"],
   },
   {
-    id: "finance",
-    name: "Finance Manager",
-    mfa: true,
-    blurb: "Journals, reconciliation, period close and tax returns.",
-    path: "app.plutusbiztech.com/close",
+    id: "accountant",
+    name: "Accountant",
+    blurb: "Journals, bills, invoices, inventory, reconciliation and returns.",
+    path: "app.plutusng.com/general-ledger",
     title: "Month-end close · March 2026",
     sub: "Reconcile, review and lock the period",
     kv: [
@@ -56,37 +56,36 @@ const ROLES: Role[] = [
     ],
     rows: [
       ["Bank rec · Operating account", "4 lines", "warn", "Open"],
+      ["Inventory vs GL", "₦0 diff.", "good", "Reconciled"],
       ["VAT return · March", "₦690,000", "good", "Ready"],
-      ["Depreciation · March", "Auto", "good", "Posted"],
     ],
-    perms: ["Journals", "Bank reconciliation", "Period close", "Tax returns", "Fixed assets", "Financial statements"],
+    perms: ["General ledger", "Vendors & customers", "Bank reconciliation", "Inventory", "Fixed assets", "Financial reports"],
   },
   {
-    id: "accounts",
-    name: "Accounts Officer",
-    mfa: false,
-    blurb: "Invoices, bills, receipts and payments.",
-    path: "app.plutusbiztech.com/receivables",
-    title: "Receivables",
-    sub: "Invoices, receipts and WHT credit notes",
+    id: "department",
+    name: "Department Manager",
+    blurb: "Stock requests for their department, plus leave and attendance for their team.",
+    path: "app.plutusng.com/inventory/issues",
+    title: "Stock issues · Production",
+    sub: "Requests for this department",
     kv: [
-      ["Open invoices", "37"],
-      ["Overdue", "₦3.1m"],
-      ["WHT notes due", "5"],
+      ["Open requests", "3"],
+      ["Awaiting approval", "1"],
+      ["Issued in March", "₦1.2m"],
     ],
     rows: [
-      ["INV-0412 · Okafor Foods Ltd", "₦2,580,000", "good", "Paid"],
-      ["INV-0409 · Eze Hardware", "WHT note", "warn", "Awaited"],
-      ["BILL-0233 · Bello Print Works", "TIN", "bad", "Held"],
+      ["SI-0142 · Packaging film", "40 rolls", "good", "Posted"],
+      ["SI-0145 · Safety gloves", "120 pairs", "warn", "Approval"],
+      ["SI-0146 · Machine oil", "Lot L-2291", "mute", "Draft"],
     ],
-    perms: ["Sales invoices", "Purchase bills", "Receipts & payments", "Expense claims", "Customers & vendors"],
+    perms: ["Stock issue requests", "My team", "Leave", "Attendance", "Tasks"],
   },
   {
     id: "auditor",
     name: "Auditor",
-    mfa: false,
-    blurb: "Read-only books, with every entry traced to its source.",
-    path: "app.plutusbiztech.com/audit",
+    tag: "Read-only",
+    blurb: "Read-only books, stock and payroll, with every entry traced to its source.",
+    path: "app.plutusng.com/audit-log",
     title: "Audit trail · FY2025",
     sub: "Read-only",
     kv: [
@@ -95,11 +94,11 @@ const ROLES: Role[] = [
       ["Periods locked", "12 of 12"],
     ],
     rows: [
-      ["December 2025 · Period", "Locked", "good", "Closed"],
+      ["December 2025 · Lock date", "Set", "good", "Closed"],
       ["JE-1186 · Accrual reversal", "Linked", "mute", "Reversal"],
-      ["JE-1191 · Audit adjustment", "Proposed", "warn", "Review"],
+      ["Stocktake ST-007 · Variance", "Approved", "good", "Posted"],
     ],
-    perms: ["Read-only ledgers", "Trial balance", "Financial statements", "Audit trail", "Export"],
+    perms: ["Read-only ledgers", "Financial reports", "Inventory reports", "Payroll reports", "Audit trail"],
   },
 ];
 
@@ -143,9 +142,9 @@ export function RoleTabs() {
               <strong className={cn("font-display text-[26px] font-semibold leading-[1.1]", selected && "text-gold-text")}>
                 {r.name}
               </strong>
-              {r.mfa ? (
-                <Pill tone="gold" className="self-center">
-                  MFA required
+              {r.tag ? (
+                <Pill tone={r.tag === "Read-only" ? "mute" : "gold"} className="self-center">
+                  {r.tag}
                 </Pill>
               ) : (
                 <span />

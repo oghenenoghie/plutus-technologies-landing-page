@@ -6,8 +6,8 @@ export function Roles() {
     <section id="roles" aria-labelledby="roles-title" className={sectionClass}>
       <div className="wrap">
         <SectionHead eyebrow="Who it's for" id="roles-title" title="Each role sees the work that is theirs.">
-          Access is enforced in the database, not just by hiding menu items. Your external accountant or auditor gets
-          read-only access without a shared password.
+          Eight roles, from Super Admin to Employee. Access is enforced in the database, not just by hiding menu items,
+          and your auditor gets read-only access without a shared password.
         </SectionHead>
         <RoleTabs />
       </div>

@@ -24,8 +24,8 @@ export const LINKS = {
 } as const;
 
 export const SITE = {
-  name: "PlutusBiztech",
-  url: "https://www.plutusbiztech.com",
+  name: "Plutus Technologies",
+  url: "https://www.plutusng.com",
   description:
     "The compliance-native accounting platform for Nigeria and Africa. Double-entry books with VAT, withholding tax, company income tax and the development levy from a versioned rule set, in Cloud and Desktop editions.",
 } as const;
@@ -37,7 +37,7 @@ export const CONTACT = {
     { label: "Nigeria", display: "+234 707 837 1617", value: "+2347078371617" },
     { label: "United Kingdom", display: "+44 749 474 6783", value: "+447494746783" },
   ],
-  web: { display: "www.plutusbiztech.com", value: "https://www.plutusbiztech.com" },
+  web: { display: "www.plutusng.com", value: "https://www.plutusng.com" },
   offices: [
     {
       name: "Lagos",
@@ -53,6 +53,7 @@ export const CONTACT = {
 export const NAV = [
   { href: "#product", label: "Product" },
   { href: "#compliance", label: "Tax engine" },
+  { href: "#inventory", label: "Inventory" },
   { href: "#editions", label: "Cloud & Desktop" },
   { href: "#roles", label: "Who it's for" },
   { href: "#pricing", label: "Pricing" },
