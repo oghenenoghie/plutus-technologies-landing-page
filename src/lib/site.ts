@@ -1,7 +1,17 @@
 const DESKTOP_RELEASE = "https://github.com/oghenenoghie/desktop_plutus_hr-frontend/releases/latest/download";
 
 /**
- * cloud: sign-in page of the Vercel production deployment (project `hr-payroll-wagebook`).
+ * Sign-in page of the Plutus Cloud web app (plutus-hr-system-frontend). It has no public deployment
+ * yet, so the Cloud buttons send visitors to the demo request instead. Set this to the app's
+ * sign-in URL once it is live, and the buttons go back to "Open Plutus Cloud".
+ */
+export const CLOUD_APP_URL: string | null = null;
+
+/** Label for the Cloud buttons, matching where LINKS.cloud goes. */
+export const CLOUD_CTA = CLOUD_APP_URL ? "Open Plutus Cloud" : "Request Cloud access";
+
+/**
+ * cloud: the Cloud app's sign-in page, or the contact section until it is deployed.
  * download: the Desktop section, where visitors pick an installer for their OS.
  * desktop: installers attached to the latest public GitHub release of desktop_plutus_hr-frontend.
  * `releases/latest/download/<name>` always resolves to the newest release, so new builds need no
@@ -14,7 +24,7 @@ const DESKTOP_RELEASE = "https://github.com/oghenenoghie/desktop_plutus_hr-front
 export const DESKTOP_DOWNLOADS_ENABLED = true;
 
 export const LINKS = {
-  cloud: "https://hr-payroll-wagebook.vercel.app/login",
+  cloud: CLOUD_APP_URL ?? "#contact",
   download: "/#editions",
   desktop: {
     windows: `${DESKTOP_RELEASE}/Plutus-Technologies-Setup.exe`,

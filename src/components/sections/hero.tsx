@@ -1,6 +1,6 @@
 import { Icon } from "@/components/icons";
 import { ArrowIcon, ButtonLink } from "@/components/ui/button";
-import { LINKS } from "@/lib/site";
+import { CLOUD_CTA, LINKS } from "@/lib/site";
 import { InvoiceInstrument } from "./invoice-instrument";
 
 const CHECKS = ["Debits equal credits on every post", "VAT and WHT on every invoice and bill", "TIN checked on customers and vendors"];
@@ -27,7 +27,7 @@ export function Hero() {
               Book a demo <ArrowIcon />
             </ButtonLink>
             <ButtonLink variant="line" href={LINKS.cloud}>
-              Open Plutus Cloud
+              {CLOUD_CTA}
             </ButtonLink>
             <ButtonLink variant="line" href={LINKS.download}>
               <Icon name="down" />
