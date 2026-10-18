@@ -18,8 +18,8 @@ export function Hero() {
             Accounting, correct <em className="font-medium italic text-gold-text">by construction.</em>
           </h1>
           <p className="rise max-w-[54ch] text-[clamp(17px,1.6vw,20px)] text-ink-2 [animation-delay:.12s]">
-            Plutus is the compliance-native accounting platform. Every invoice, bill, bank line and pay run posts to a
-            double-entry ledger, with VAT, withholding tax and company income tax calculated from a versioned rule set and
+            Plutus is the compliance-native accounting platform. Every invoice, bill, stock movement, bank line and pay
+            run posts to a double-entry ledger, with VAT, withholding tax and company income tax calculated from a versioned rule set and
             tracked to the deadline. Run it in the cloud or fully offline on your own machine.
           </p>
           <div className="rise flex flex-wrap gap-3 [animation-delay:.18s]">

@@ -7,11 +7,11 @@ const STEPS = [
   },
   {
     title: "Record the month",
-    body: "Invoices, bills, receipts, payments and pay runs. Each one posts double-entry, with VAT and WHT calculated as it posts.",
+    body: "Invoices, bills, payments, stock movements and pay runs. Each one posts double-entry, with VAT and WHT calculated as it posts.",
   },
   {
     title: "Reconcile",
-    body: "Bank statements matched line by line, WHT credit notes matched to receipts, and anything unexplained held for review.",
+    body: "Bank statements matched line by line, stock value checked against the inventory account, and anything unexplained held for review.",
   },
   {
     title: "Close, file and report",

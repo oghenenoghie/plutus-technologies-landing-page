@@ -1,6 +1,6 @@
-# PlutusBiztech — marketing site
+# Plutus Technologies — marketing site
 
-Public site for plutusbiztech.com, which sells the Plutus accounting platform (double-entry books with VAT, WHT, CIT and the development levy, plus payroll as a module) in **Cloud** and **Desktop** editions.
+Public site for plutusng.com, which sells the Plutus accounting platform (double-entry books with VAT, WHT, CIT and the development levy, plus payroll as a module) in **Cloud** and **Desktop** editions.
 Next.js App Router, Tailwind CSS v4 and shadcn/ui conventions, using the letterhead brand (black, gold, serif wordmark).
 
 ```bash
@@ -20,10 +20,10 @@ npm run build
 
 ## Before launch
 
-- `LINKS.cloud` points to `https://hr-payroll-wagebook.vercel.app/login`. Move it to a custom domain (for example `app.plutusbiztech.com`) and make sure Vercel Deployment Protection does not put a Vercel login in front of visitors.
+- `LINKS.cloud` points to `https://hr-payroll-wagebook.vercel.app/login`. Move it to a custom domain (for example `app.plutusng.com`) and make sure Vercel Deployment Protection does not put a Vercel login in front of visitors.
 - `LINKS.desktop` points to `releases/latest/download/<installer>` on `desktop_plutus_hr-frontend` (`Plutus-Technologies-Setup.exe`, `Plutus-Technologies-mac.dmg`, `Plutus-Technologies-linux.AppImage`). These links work once that repo has a published GitHub release carrying those files, and always serve the newest release.
 - The site now leads with accounting. `LINKS.cloud` and `LINKS.desktop` still point at the HR & payroll app and its installers; repoint them if the accounting product ships separately.
 - VAT, CIT and the development levy are now in the statutory reference (§8 and §13). The small-company turnover limit is disputed: the Nigeria Tax Act as enacted says ₦50m, the Tax Administration Act and the reform committee say ₦100m. The site uses ₦100m by owner decision; revisit if the NRS rules otherwise.
-- Confirm which of the accounting modules are live and which are roadmap. The feature map currently says "in scope".
+- The feature map in `platform.tsx` mirrors the app's own Full Feature Map (`plutus-hr-system-frontend`, `src/lib/nav.ts`) as of 13 October 2026, including the new Inventory module. Update both together when screens are added.
 - Add a real demo-request endpoint (Route Handler → email/CRM) before turning the contact block into a form.
 - Re-confirm the tax-matrix deadlines against primary agency guidance.

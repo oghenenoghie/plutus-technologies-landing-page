@@ -4,6 +4,7 @@ import { SITE } from "@/lib/site";
 const LINKS = [
   ["#product", "Product"],
   ["#compliance", "Tax engine"],
+  ["#inventory", "Inventory"],
   ["#editions", "Cloud & Desktop"],
   ["#security", "Security"],
   ["#pricing", "Pricing"],

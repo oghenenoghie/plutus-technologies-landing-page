@@ -14,7 +14,7 @@ const TIERS = [
     tier: "Complete",
     title: "Full Finance Suite",
     recommended: true,
-    items: ["Everything in Core", "Fixed assets, inventory and budgets", "Cost centres and projects", "Payroll posted to the ledger"],
+    items: ["Everything in Core", "Inventory, from purchase order to stocktake", "Fixed assets and budgets", "Payroll posted to the ledger"],
     cta: "Request a quote",
   },
   {

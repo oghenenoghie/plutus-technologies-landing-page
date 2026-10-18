@@ -22,7 +22,7 @@ const EDITIONS = [
     body: "The full platform in the browser, for teams that work across offices and states.",
     items: [
       "Sign in from any browser, no installation",
-      "Role-based access with MFA for owners and finance managers",
+      "Role-based access, with multi-factor sign-in for every role",
       "Bank statement import and reconciliation",
       "Read-only access for your external accountant or auditor",
     ],
