@@ -20,9 +20,9 @@ npm run build
 
 ## Before launch
 
-- `LINKS.cloud` points to `https://hr-payroll-wagebook.vercel.app/login`. Move it to a custom domain (for example `app.plutusng.com`) and make sure Vercel Deployment Protection does not put a Vercel login in front of visitors.
+- The new Cloud web app (`plutus-hr-system-frontend`) has no public deployment yet, so the Cloud buttons read "Request Cloud access" and go to the contact section. Once it is live, set `CLOUD_APP_URL` in `src/lib/site.ts` to its sign-in URL (ideally on a custom domain such as `app.plutusng.com`, without Vercel Deployment Protection in front of visitors); the buttons then read "Open Plutus Cloud".
 - `LINKS.desktop` points to `releases/latest/download/<installer>` on `desktop_plutus_hr-frontend` (`Plutus-Technologies-Setup.exe`, `Plutus-Technologies-mac.dmg`, `Plutus-Technologies-linux.AppImage`). These links work once that repo has a published GitHub release carrying those files, and always serve the newest release.
-- The site now leads with accounting. `LINKS.cloud` and `LINKS.desktop` still point at the HR & payroll app and its installers; repoint them if the accounting product ships separately.
+- `LINKS.desktop` serves the latest `desktop_plutus_hr-frontend` release; `desktop-v0.1.0-build.24` (13 October 2026) already includes the Inventory module.
 - VAT, CIT and the development levy are now in the statutory reference (§8 and §13). The small-company turnover limit is disputed: the Nigeria Tax Act as enacted says ₦50m, the Tax Administration Act and the reform committee say ₦100m. The site uses ₦100m by owner decision; revisit if the NRS rules otherwise.
 - The feature map in `platform.tsx` mirrors the app's own Full Feature Map (`plutus-hr-system-frontend`, `src/lib/nav.ts`) as of 13 October 2026, including the new Inventory module. Update both together when screens are added.
 - Add a real demo-request endpoint (Route Handler → email/CRM) before turning the contact block into a form.
