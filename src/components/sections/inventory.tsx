@@ -61,9 +61,9 @@ export function Inventory() {
   return (
     <section id="inventory" aria-labelledby="inventory-title" className={sectionClass}>
       <div className="wrap">
-        <SectionHead eyebrow="Inventory · New module" id="inventory-title" title="Stock that reconciles to the ledger.">
-          Inventory is the newest module in Plutus. Every receipt, issue, transfer and adjustment writes a stock movement
-          and posts its journal to the general ledger, so the stock report and the balance sheet tell the same story.
+        <SectionHead eyebrow="How stock moves" id="inventory-title" title="Every document posts its journal.">
+          Each receipt, issue, transfer and adjustment writes a stock movement and posts to the general ledger, so the
+          stock report and the balance sheet tell the same story.
         </SectionHead>
 
         <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,.7fr)]">

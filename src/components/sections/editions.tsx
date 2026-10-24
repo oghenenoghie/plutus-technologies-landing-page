@@ -32,7 +32,7 @@ const EDITIONS = [
       </ButtonLink>
     ),
     secondary: (
-      <ButtonLink variant="line" href="#contact">
+      <ButtonLink variant="line" href={LINKS.contact}>
         Book a demo
       </ButtonLink>
     ),
@@ -65,7 +65,7 @@ const EDITIONS = [
       </>
     ),
     secondary: (
-      <ButtonLink variant="line" href="#contact">
+      <ButtonLink variant="line" href={LINKS.contact}>
         Licensing questions
       </ButtonLink>
     ),
@@ -76,7 +76,7 @@ export function Editions() {
   return (
     <section id="editions" aria-labelledby="editions-title" className={cn(sectionClass, "bg-sunk")}>
       <div className="wrap">
-        <SectionHead eyebrow="Cloud & Desktop" id="editions-title" title="Run Plutus online, or entirely on your own machine.">
+        <SectionHead eyebrow="Editions" id="editions-title" title="Two editions, one rule set.">
           Both editions run the same ledger, tax engine and rule set. Choose by where your financial data needs to live and
           how your office connects.
         </SectionHead>

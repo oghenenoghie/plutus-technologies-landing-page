@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Cinzel, Cormorant_Garamond, IBM_Plex_Mono, Nunito_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 import { IconSprite } from "@/components/icons";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { UtilityBar } from "@/components/utility-bar";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -36,7 +39,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body>
         <IconSprite />
+        <UtilityBar />
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
