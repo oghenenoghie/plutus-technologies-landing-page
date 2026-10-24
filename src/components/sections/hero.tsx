@@ -23,7 +23,7 @@ export function Hero() {
             tracked to the deadline. Run it in the cloud or fully offline on your own machine.
           </p>
           <div className="rise flex flex-wrap gap-3 [animation-delay:.18s]">
-            <ButtonLink href="#contact">
+            <ButtonLink href={LINKS.contact}>
               Book a demo <ArrowIcon />
             </ButtonLink>
             <ButtonLink variant="line" href={LINKS.cloud}>

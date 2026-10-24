@@ -1,6 +1,7 @@
 import { SectionHead, sectionClass } from "@/components/section-head";
 import { ButtonLink } from "@/components/ui/button";
 import { Pill } from "@/components/ui/pill";
+import { LINKS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const TIERS = [
@@ -29,9 +30,7 @@ export function Pricing() {
   return (
     <section id="pricing" aria-labelledby="pricing-title" className={sectionClass}>
       <div className="wrap">
-        <SectionHead eyebrow="Pricing" id="pricing-title" title="Priced per employee, per month.">
-          Plans are tiered by depth. Every plan includes the full Nigerian tax engine.
-        </SectionHead>
+        <SectionHead eyebrow="Plans" id="pricing-title" title="Three plans, tiered by depth." />
         <div className="grid gap-5 lg:grid-cols-3">
           {TIERS.map((t) => (
             <article
@@ -54,7 +53,7 @@ export function Pricing() {
                   <li key={i}>{i}</li>
                 ))}
               </ul>
-              <ButtonLink variant={t.recommended ? "gold" : "line"} href="#contact" className="w-full">
+              <ButtonLink variant={t.recommended ? "gold" : "line"} href={LINKS.contact} className="w-full">
                 {t.cta}
               </ButtonLink>
             </article>

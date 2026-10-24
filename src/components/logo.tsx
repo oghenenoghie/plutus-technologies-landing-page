@@ -6,7 +6,7 @@ export function Logo({ tone = "paper", className }: { tone?: "paper" | "deep"; c
   const deep = tone === "deep";
   return (
     <a
-      href="#top"
+      href="/"
       aria-label={`${SITE.name}, home`}
       className={cn("flex flex-none items-center gap-3 no-underline", deep ? "text-deep-ink" : "text-ink", className)}
     >

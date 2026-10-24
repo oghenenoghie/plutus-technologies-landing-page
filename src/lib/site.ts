@@ -11,8 +11,8 @@ export const CLOUD_APP_URL: string | null = null;
 export const CLOUD_CTA = CLOUD_APP_URL ? "Open Plutus Cloud" : "Request Cloud access";
 
 /**
- * cloud: the Cloud app's sign-in page, or the contact section until it is deployed.
- * download: the Desktop section, where visitors pick an installer for their OS.
+ * cloud: the Cloud app's sign-in page, or the contact page until it is deployed.
+ * download: the Cloud & Desktop page, where visitors pick an installer for their OS.
  * desktop: installers attached to the latest public GitHub release of desktop_plutus_hr-frontend.
  * `releases/latest/download/<name>` always resolves to the newest release, so new builds need no
  * change here as long as the file names (electron-builder.yml `artifactName`) stay the same.
@@ -24,8 +24,9 @@ export const CLOUD_CTA = CLOUD_APP_URL ? "Open Plutus Cloud" : "Request Cloud ac
 export const DESKTOP_DOWNLOADS_ENABLED = true;
 
 export const LINKS = {
-  cloud: CLOUD_APP_URL ?? "#contact",
-  download: "/#editions",
+  cloud: CLOUD_APP_URL ?? "/contact",
+  download: "/editions",
+  contact: "/contact",
   desktop: {
     windows: `${DESKTOP_RELEASE}/Plutus-Technologies-Setup.exe`,
     mac: `${DESKTOP_RELEASE}/Plutus-Technologies-mac.dmg`,
@@ -60,12 +61,54 @@ export const CONTACT = {
   ],
 } as const;
 
+/** One page per product area. Drives the home page cards, the footer and the sitemap. */
+export const FEATURE_PAGES = [
+  {
+    href: "/accounting",
+    title: "Accounting & tax",
+    blurb: "Double-entry books with VAT, WHT, company income tax and the development levy calculated as entries post.",
+    points: ["General ledger and chart of accounts", "Vendor bills and customer invoices", "VAT and WHT returns with schedules"],
+  },
+  {
+    href: "/inventory",
+    title: "Inventory",
+    blurb: "Purchase orders to stocktakes, with every stock movement posted to the ledger at weighted-average cost.",
+    points: ["Goods receipts against orders", "Lots, expiry and reorder suggestions", "Stock value reconciled to the GL"],
+  },
+  {
+    href: "/analytics",
+    title: "Analytics & Insights",
+    isNew: true,
+    blurb: "Ten dashboards computed on the server from payroll, HR, attendance and ledger records.",
+    points: ["Executive overview and nine section views", "Every figure with its definition", "Drill down and export to CSV, XLSX or PDF"],
+  },
+  {
+    href: "/payroll",
+    title: "Payroll & HR",
+    blurb: "Pay runs, statutory deductions and the people records payroll depends on, in the same system as the books.",
+    points: ["PAYE, pension, NHF, NSITF and ITF", "Final settlement and simulation", "Leave, attendance and self-service"],
+  },
+  {
+    href: "/countries",
+    title: "Country compliance",
+    isNew: true,
+    blurb: "A catalogue of supported jurisdictions, each with its currency, tax authority and readiness.",
+    points: ["Nigeria active", "Five more countries catalogued", "No rate used until it is sourced and approved"],
+  },
+  {
+    href: "/editions",
+    title: "Cloud & Desktop",
+    blurb: "Run Plutus in the browser or fully offline on your own machine, on the same rule set.",
+    points: ["Windows, macOS and Linux installers", "Updates install over the previous version", "Data stays on your machine"],
+  },
+] as const;
+
 export const NAV = [
-  { href: "#product", label: "Product" },
-  { href: "#compliance", label: "Tax engine" },
-  { href: "#inventory", label: "Inventory" },
-  { href: "#editions", label: "Cloud & Desktop" },
-  { href: "#roles", label: "Who it's for" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#contact", label: "Contact" },
+  { href: "/features", label: "Features" },
+  { href: "/accounting", label: "Accounting" },
+  { href: "/inventory", label: "Inventory" },
+  { href: "/analytics", label: "Analytics" },
+  { href: "/payroll", label: "Payroll & HR" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/contact", label: "Contact" },
 ] as const;
