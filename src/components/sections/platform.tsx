@@ -57,7 +57,6 @@ export const MODULE_GROUPS = [
   },
   {
     heading: "Inventory",
-    isNew: true,
     items: [
       "Inventory Overview",
       "Items",
@@ -76,10 +75,27 @@ export const MODULE_GROUPS = [
     ],
   },
   {
+    heading: "Analytics & Insights",
+    isNew: true,
+    items: [
+      "Executive Overview",
+      "Workforce Analytics",
+      "Payroll Analytics",
+      "Attendance Analytics",
+      "Leave Analytics",
+      "Recruitment Analytics",
+      "Performance Analytics",
+      "Compliance Analytics",
+      "Financial Analytics",
+      "Custom Reports",
+    ],
+  },
+  {
     heading: "Payroll and compliance",
     items: [
       "Payroll Runs",
       "Compliance Engine",
+      "Country Compliance",
       "PAYE Calculator",
       "Payroll Reports",
       "Final Settlement",

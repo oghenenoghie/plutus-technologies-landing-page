@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { UtilityBar } from "@/components/utility-bar";
-import { ComplianceEngine } from "@/components/sections/compliance-engine";
 import { Contact } from "@/components/sections/contact";
-import { Editions } from "@/components/sections/editions";
 import { Engineering } from "@/components/sections/engineering";
 import { Hero } from "@/components/sections/hero";
-import { IntegrationsMarkets } from "@/components/sections/integrations-markets";
-import { Inventory } from "@/components/sections/inventory";
-import { MonthClose } from "@/components/sections/month-close";
-import { Platform } from "@/components/sections/platform";
-import { Pricing } from "@/components/sections/pricing";
+import { ModuleCards } from "@/components/sections/module-cards";
 import { Reform } from "@/components/sections/reform";
 import { Roles } from "@/components/sections/roles";
 import { StatStrip } from "@/components/sections/stat-strip";
@@ -30,25 +21,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function HomePage() {
   return (
-    <>
-      <UtilityBar />
-      <SiteHeader />
-      <main id="top">
-        <Hero />
-        <StatStrip />
-        <Reform />
-        <Platform />
-        <ComplianceEngine />
-        <Inventory />
-        <MonthClose />
-        <Editions />
-        <Roles />
-        <Engineering />
-        <IntegrationsMarkets />
-        <Pricing />
-        <Contact />
-      </main>
-      <SiteFooter />
-    </>
+    <main id="top">
+      <Hero />
+      <StatStrip />
+      <ModuleCards />
+      <Reform />
+      <Roles />
+      <Engineering />
+      <Contact />
+    </main>
   );
 }

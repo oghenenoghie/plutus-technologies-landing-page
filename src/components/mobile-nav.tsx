@@ -46,7 +46,7 @@ export function MobileNav() {
               <Icon name="down" />
               Download
             </ButtonLink>
-            <ButtonLink href="#contact">Book a demo</ButtonLink>
+            <ButtonLink href={LINKS.contact}>Book a demo</ButtonLink>
           </div>
         </nav>
       </div>
