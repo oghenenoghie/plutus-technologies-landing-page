@@ -110,5 +110,6 @@ export const NAV = [
   { href: "/analytics", label: "Analytics" },
   { href: "/payroll", label: "Payroll & HR" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/docs", label: "Docs" },
   { href: "/contact", label: "Contact" },
 ] as const;
