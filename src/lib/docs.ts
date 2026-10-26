@@ -501,6 +501,13 @@ export const DOC_GUIDES: DocGuide[] = [
         roles: [...BOOKS, "auditor"],
         intro:
           "The catalogue lists every country Plutus supports, with its currency, tax authority and status. Payroll runs only where a country's rules are approved. Today that is Nigeria. Your organisation's country is set in Setup & Onboarding.",
+        points: [
+          "**Active**: the rules are approved, and payroll and tax calculations run.",
+          "**Draft**: the rules are written up with their sources and wait for review by a tax adviser in that country.",
+          "**Awaiting review**: the adviser is checking them.",
+          "**Setup required**: nothing is drafted yet.",
+        ],
+        note: "A country's rules can go live only when every rule cites the law or the tax authority's own publication, a tax adviser has reviewed them, and someone other than the person who prepared them has approved them.",
         shots: [shot("countries", "The Country Compliance catalogue", "Nigeria is active; the other five are drafts awaiting approved rules.")],
       },
     ],
@@ -655,7 +662,7 @@ export const DOC_GUIDES: DocGuide[] = [
           "Plutus Desktop runs its own database on your computer. It needs no internet connection, and your data stays on your machine.",
           "To update, download the new installer and run it. It installs over the previous version and keeps your data.",
           "On Windows, the installer stops a running Plutus before replacing it.",
-          "The current Desktop release (build 36) does not include Analytics & Insights or Country Compliance.",
+          "Since build 42 (October 2026), Desktop has every screen in these guides, including Analytics & Insights, Country Compliance and the choice of country at sign-up. If you installed an earlier build, update to get them.",
         ],
       },
     ],
