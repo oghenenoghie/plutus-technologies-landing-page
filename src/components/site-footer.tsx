@@ -5,6 +5,7 @@ const LINKS = [
   ["/features", "All features"],
   ...FEATURE_PAGES.map((p) => [p.href, p.title] as const),
   ["/pricing", "Pricing"],
+  ["/docs", "Documentation"],
   ["/contact", "Contact"],
 ] as const;
 

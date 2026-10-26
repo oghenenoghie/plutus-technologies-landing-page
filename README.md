@@ -20,6 +20,7 @@ npm run build
 - `src/lib/site.ts`: `FEATURE_PAGES` drives the home page cards, the footer and the sitemap; `NAV` is the header menu.
 - `src/lib/countries.ts`: the country catalogue, mirroring `plutus-hr-system` `app/compliance/multicountry.py`.
 - `src/components/sections/`: one file per section, shared across pages. Only the invoice instrument, role tabs, mobile nav and copy buttons are client components.
+- `/docs`: the product documentation. `src/lib/docs.ts` holds every guide (steps, menu paths, roles, screenshots); `src/app/docs/` renders the index and one page per guide (`/docs/getting-started`, `/accounting`, `/inventory`, `/payroll`, `/people`, `/analytics`, `/desktop`). Screenshots are WebP files in `public/docs/screens`, taken from a local Cloud app filled with a fictional company. `scripts/docs-screens/` re-creates them; `npm test` checks each one exists at the size `docs.ts` declares.
 
 ## Before launch
 
@@ -28,5 +29,8 @@ npm run build
 - `LINKS.desktop` serves the latest `desktop_plutus_hr-frontend` release. `desktop-v0.1.0-build.36` includes Inventory and the installer and update fixes on `/editions`, but not Analytics & Insights or Country Compliance (merged 24 October 2026); they reach Desktop users with the next release.
 - VAT, CIT and the development levy are now in the statutory reference (§8 and §13). The small-company turnover limit is disputed: the Nigeria Tax Act as enacted says ₦50m, the Tax Administration Act and the reform committee say ₦100m. The site uses ₦100m by owner decision; revisit if the NRS rules otherwise.
 - The feature map in `platform.tsx` mirrors the app's own Full Feature Map (`plutus-hr-system-frontend`, `src/lib/nav.ts`) as of 13 October 2026, including the new Inventory module. Update both together when screens are added.
+- The docs describe the app as of 25 October 2026. Two things in the app need fixing, after which the docs change too:
+  - The web app has no buttons to validate, lock or mark a pay run paid (the API has the endpoints), so the Payroll guide lists the statuses but not how to move a run between them.
+  - The New Employee form labels the pay fields "Annual", but the payroll engine reads them per pay period. The People & HR guide says so in a note.
 - Add a real demo-request endpoint (Route Handler → email/CRM) before turning the contact block into a form.
 - Re-confirm the tax-matrix deadlines against primary agency guidance.
