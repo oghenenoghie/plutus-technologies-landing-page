@@ -1,7 +1,7 @@
 import { SectionHead, sectionClass } from "@/components/section-head";
 import { cn } from "@/lib/utils";
 
-// From desktop_plutus_hr-frontend, shipped in desktop-v0.1.0-build.36 (October 2026).
+// From desktop_plutus_hr-frontend, shipped by desktop-v0.1.0-build.36 and still true in build.42 (October 2026).
 const DETAILS = [
   ["updates / in place", "Updates install over the top", "A new version installs over the one you have. The installer closes the app's own database and server first, and leaves any other PostgreSQL alone."],
   ["startup / visible", "You can see it start", "A window opens straight away and shows each startup step. If the app can't start, it says why and offers to try again."],

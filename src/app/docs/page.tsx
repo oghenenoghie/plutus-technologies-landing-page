@@ -97,8 +97,7 @@ export default function DocsPage() {
             </li>
             <li>
               <span>
-                Plutus Desktop has the same screens, except Analytics &amp; Insights and Country Compliance, which are not in
-                the current Desktop release.
+                Plutus Desktop has the same screens, including Analytics &amp; Insights and Country Compliance since build 42.
               </span>
             </li>
             <li>
