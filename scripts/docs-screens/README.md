@@ -16,6 +16,7 @@ Everything here runs against local services only. Never point it at production: 
 
    ```bash
    uv run python /path/to/this/folder/seed.py state.json
+   uv run python /path/to/this/folder/seed_kenya.py state.json   # Tax Settings and engine payslips
    ```
 
 4. **Screenshots.** `capture.js` needs the `playwright` package and its Chromium:

@@ -95,6 +95,7 @@ export const MODULE_GROUPS = [
     items: [
       "Payroll Runs",
       "Compliance Engine",
+      "Tax Settings",
       "Country Compliance",
       "PAYE Calculator",
       "Payroll Reports",

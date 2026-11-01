@@ -6,7 +6,7 @@ export async function generateMetadata() {
   return pageMetadata({
     title: "Payroll & HR",
     description:
-      "Pay runs with PAYE, pension, NHF, NHIS, NSITF, ITF and WHT from a versioned rule set, posted to the ledger, with the HR records payroll depends on.",
+      "Pay runs in six countries, each on its own versioned statutory rules and posted to the ledger, with the HR records payroll depends on.",
     path: "/payroll",
   });
 }

@@ -7,13 +7,14 @@ import { MODULE_GROUPS } from "./platform";
 const th = "whitespace-nowrap border-b border-deep-line px-4 py-[11px] text-left text-[11px] font-extrabold uppercase tracking-[.1em] text-deep-soft";
 const td = "border-b border-deep-line px-4 py-3 align-top";
 
+// The country-specific lines follow plutus-hr-system's rule sets (October 2026).
 const PAYROLL_FEATURES = [
   ["Pay runs", "Monthly, bonus, 13th-month, arrears and off-cycle runs. A locked run is never edited: a mistake is reversed with a compensating journal."],
-  ["Statutory liabilities", "Each run raises PAYE, pension, NHF, NSITF and ITF liabilities with due dates taken from the rule version."],
-  ["Journals at lock", "Gross pay, employer pension and NSITF post to the ledger as balanced journals when a run is locked."],
-  ["Contractors", "Withholding tax deducted from contractor and supplier payments and tracked to remittance."],
+  ["Six countries", "Nigeria, Ghana, Kenya, Rwanda, The Gambia and Côte d'Ivoire, each in its own currency. Outside Nigeria, an admin first enters the figures the sources leave open, under Tax Settings."],
+  ["Statutory liabilities", "Each run raises its country's liabilities with their due dates: PAYE, pension, NHF, NSITF and ITF in Nigeria; PAYE, NSSF, SHIF and the Housing Levy in Kenya; and so on."],
+  ["Journals at lock", "Gross pay, employer contributions and levies post to the ledger as balanced journals when a run is locked."],
   ["Final settlement", "Leavers' final pay worked out in the same engine, and their termination recorded."],
-  ["Simulation and PAYE calculator", "Try a pay change before it runs, and see PAYE worked out band by band."],
+  ["Nigeria's extras", "Withholding tax on contractor payments, a pay-change simulation, and the PAYE calculator band by band."],
 ] as const;
 
 function BorneBy({ who }: { who: Scheme["borneBy"] }) {
@@ -33,7 +34,7 @@ export function PayrollSchemes() {
   return (
     <section aria-labelledby="schemes-title" className={deepSectionClass}>
       <div className="wrap">
-        <SectionHead eyebrow="Payroll compliance" id="schemes-title" title="Seven schemes, each with its own base, rate and deadline.">
+        <SectionHead eyebrow="Nigeria's payroll compliance" id="schemes-title" title="Seven schemes, each with its own base, rate and deadline.">
           The payroll rule set sits beside the business taxes in the same versioned engine. A change in the law is one new
           rule version, and past pay runs stay reproducible under the rules that applied at the time.
         </SectionHead>

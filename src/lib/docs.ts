@@ -2,8 +2,9 @@
  * The product documentation at /docs: one guide per area of the app, each a list of sections.
  *
  * Every step, label and menu path was checked against plutus-hr-system-frontend and plutus-hr-system
- * (October 2026). Screenshots are in public/docs/screens. They were taken from a local build of the
- * Cloud app, with a fictional organisation ("Sample Trading Ltd") and sample figures, at 1440×900.
+ * (31 October 2026). Screenshots are in public/docs/screens. They were taken from a local build of the
+ * Cloud app, with fictional organisations ("Sample Trading Ltd" in Nigeria, "Sample Trading Kenya Ltd"
+ * for Tax Settings and engine payslips) and sample figures, at 1440×900.
  * The control a step points at is outlined in gold.
  *
  * In step and point text, **double asterisks** mark a label exactly as it appears in the app.
@@ -66,6 +67,7 @@ export interface DocGuide {
 const SIZES: Record<string, [number, number]> = {
   dashboard: [1600, 844],
   "payroll-derivation": [1090, 950],
+  "payroll-derivation-ke": [1064, 980],
 };
 
 function shot(name: string, alt: string, caption: string): DocShot {
@@ -90,10 +92,10 @@ export const DOC_GUIDES: DocGuide[] = [
         intro: "A workspace is your organisation in Plutus. Whoever creates it becomes its Super Admin.",
         steps: [
           "On the sign-in page, choose **Set up your workspace**.",
-          "Enter your company name and address, and choose your country. The country sets your currency and the tax rules Plutus applies.",
+          "Enter your company name and address, and choose your country: Nigeria, Ghana, Kenya, Rwanda, The Gambia or Côte d'Ivoire. The country sets your currency and the payroll rules Plutus applies.",
           "Enter your work email and a password of at least 8 characters, then choose **Create workspace**.",
         ],
-        note: "Sign-up only offers countries whose tax rules have been approved. Today that is Nigeria. The other countries in the catalogue are listed as not yet available.",
+        note: "In Nigeria, payroll works straight away. In the other five countries, an admin first enters a few figures under **Tax Settings**, before the first pay run. See the Payroll guide.",
         shots: [shot("signup", "The Set up your workspace form", "Sign-up asks for the company, its country, and your email and password.")],
       },
       {
@@ -114,9 +116,9 @@ export const DOC_GUIDES: DocGuide[] = [
         roles: ["admin"],
         steps: [
           "Check the **Country** panel shows the right country and currency. It can change only until the organisation has its first pay run or posted journal.",
-          "Under **Statutory registration**, enter your RC number, company TIN and company address. They appear on payslips, statutory filings and generated documents.",
-          "Under **States of operation**, choose the Nigerian states you employ staff in.",
-          "Under **Onboarding defaults**, set the default pay frequency and pension fund administrator. New-hire forms start from these; existing employees are never changed.",
+          "Under **Statutory registration**, enter your company's tax ID and address, and in Nigeria its RC number. They appear on payslips, statutory filings and generated documents.",
+          "In Nigeria, choose the states you employ staff in under **States of operation**.",
+          "Under **Onboarding defaults**, set the default pay frequency, and in Nigeria the default pension fund administrator. New-hire forms start from these; existing employees are never changed.",
         ],
         shots: [shot("setup", "The Setup & Onboarding page", "Country, statutory registration and onboarding defaults on one page.")],
       },
@@ -398,19 +400,52 @@ export const DOC_GUIDES: DocGuide[] = [
   {
     slug: "payroll",
     title: "Payroll",
-    summary: "Statutory rules, pay runs, payslips and how each figure is derived, reports and the calculator.",
+    summary: "Statutory rules and Tax Settings, pay runs, payslips and how each figure is derived, reports and the calculator.",
     description:
-      "How Plutus runs payroll: the statutory rule set, starting a pay run, reading payslips and their derivation, payroll reports and the PAYE calculator.",
+      "How Plutus runs payroll in six countries: the statutory rules, Tax Settings, starting a pay run, reading payslips and their derivation, payroll reports and the PAYE calculator.",
     sections: [
       {
         id: "rules",
-        title: "The statutory rules",
+        title: "Nigeria's statutory rules",
         where: ["Accounts", "Payroll", "Compliance Engine"],
         roles: [...BOOKS, "auditor"],
         intro:
-          "The Compliance Engine lists the rules every pay run uses: PAYE, pension, NHF, NSITF, ITF and WHT, with each one's base, rate, authority and deadline, and the PAYE bands. They carry a rule version, such as NG-2026.1.",
-        note: "Before your first pay run, make sure each employee has their pay components, state of residence, TIN and pension details. See People & HR.",
+          "For a Nigerian organisation, the Compliance Engine lists the rules every pay run uses: PAYE, pension, NHF, NSITF, ITF and WHT, with each one's base, rate, authority and deadline, and the PAYE bands. They carry a rule version, such as NG-2026.1.",
+        note: "The Compliance Engine, PAYE Calculator, Simulation and Contractors screens are for Nigerian organisations. Before your first pay run, make sure each employee has their pay components, state of residence, TIN and pension details. See People & HR.",
         shots: [shot("compliance", "The Compliance Engine page", "Statutory schemes and PAYE bands for the current rule version.")],
+      },
+      {
+        id: "tax-settings",
+        title: "Tax Settings, outside Nigeria",
+        where: ["Accounts", "Payroll", "Tax Settings"],
+        roles: ["admin"],
+        intro:
+          "Ghana, Kenya, Rwanda, The Gambia and Côte d'Ivoire run on rule sets Plutus Technologies approved on 27 October 2026 from published sources, before review by a local tax adviser. Where the sources disagree or say nothing, the rule set leaves the figure to your organisation, and pay runs are refused until every figure is entered.",
+        steps: [
+          "Open **Tax Settings**. The top panel names your country's rule set, the date it applies from, and who approved it.",
+          "Under **Figures your organisation enters**, read why each figure is open, then choose a value. Each option names the source that gives it.",
+          "Choose the date it **Takes effect from**, and add a note if you like, such as who advised it.",
+          "Save. The button counts the figures you changed, such as **Save 3 figures**.",
+        ],
+        points: [
+          "**The rules as they stand today** lists every line a pay run uses: the income tax bands, then each contribution, levy and relief, with who pays it, who it's paid to, when it's due and its source.",
+          "**Sources** marks each source official (the law or the authority's own publication) or secondary, such as an accounting firm or payroll vendor.",
+          "**History** keeps every figure ever entered and who entered it. Nothing is overwritten: a new value takes over from its date, and it can't take effect on or before the end of a locked pay run.",
+          "When a new rule set is due, such as Rwanda's from 1 January 2027, the figures it adds appear under its start date, so you can enter them before the first pay run that needs them.",
+        ],
+        note: "Only a Super Admin can enter figures. Payroll Managers, Accountants and Auditors can read the page.",
+        shots: [
+          shot(
+            "tax-settings",
+            "The Tax Settings page for a Kenyan organisation",
+            "Kenya's rule set and its approval, and the figures a Kenyan company enters: whether NSSF is deducted before PAYE, and whether it pays the NITA levy and when.",
+          ),
+          shot(
+            "tax-settings-rules",
+            "The rules as they stand today, on Tax Settings",
+            "The PAYE bands, then each contribution and levy with its payer, due date and source.",
+          ),
+        ],
       },
       {
         id: "start-a-pay-run",
@@ -448,17 +483,22 @@ export const DOC_GUIDES: DocGuide[] = [
         where: ["Accounts", "Payroll", "Payroll Runs"],
         roles: [...BOOKS, "auditor"],
         steps: [
-          "Choose **View** on a run to see every payslip, with gross pay, PAYE and net pay.",
-          "Choose **how?** on a payslip to see how each figure was worked out.",
+          "Choose **View** on a run to see every payslip, with gross pay, income tax and net pay.",
+          "Choose **how?** on a payslip to see how each figure was worked out. Outside Nigeria, it lists each of your country's lines in turn, and the rule set it used.",
           "Choose **PDF** to download the payslip. Its delivery status shows beside the breakdown, with **Resend Payslip**.",
         ],
-        note: "PAYE is cumulative over the tax year. Plutus taxes the year-to-date chargeable income and subtracts the PAYE already withheld, so a pay rise or a missed month is handled properly.",
+        note: "In Nigeria, PAYE is cumulative over the tax year. Plutus taxes the year-to-date chargeable income and subtracts the PAYE already withheld, so a pay rise or a missed month is handled properly.",
         shots: [
           shot("payroll-run", "A locked pay run with its payslips", "Gross, PAYE and net for every employee in the run."),
           shot(
             "payroll-derivation",
-            "A payslip's derivation",
+            "A Nigerian payslip's derivation",
             "Gross pay, pension, NHF, rent relief and cumulative chargeable income, then PAYE and net pay.",
+          ),
+          shot(
+            "payroll-derivation-ke",
+            "A Kenyan payslip's derivation",
+            "NSSF, SHIF, the Affordable Housing Levy and the NITA levy, then PAYE and net pay, under rule set KE-2026.1.",
           ),
         ],
       },
@@ -479,15 +519,16 @@ export const DOC_GUIDES: DocGuide[] = [
         where: ["Accounts", "Payroll", "Payroll Reports"],
         roles: [...BOOKS, "auditor"],
         points: [
-          "**Payroll Register**: for a pay run you choose, every employee's gross, employee and employer pension, NHF, PAYE, loan, benefit and union dues deductions, and net pay.",
-          "**PAYE by State**: the number of employees and the total PAYE for each state.",
-          "**Annual Tax Reconciliation**: for a tax year, each employee's TIN, gross pay, pension, NHF, PAYE and number of payslips, with their certificate.",
+          "**Payroll Register**: for a pay run you choose, every employee's gross pay, statutory deductions, loan, benefit and union dues deductions, and net pay.",
+          "**PAYE by State**, in Nigeria: the number of employees and the total PAYE for each state.",
+          "**Statutory Summary**, outside Nigeria: each statutory line's total over locked pay runs, with its kind, who it's paid to and the number of employees.",
+          "**Annual Tax Reconciliation**: for a tax year, each employee's tax ID, gross pay, statutory deductions, income tax and number of payslips, with their certificate.",
         ],
         shots: [shot("payroll-reports", "The Payroll Register", "Every deduction for every employee in the chosen run.")],
       },
       {
         id: "calculator",
-        title: "Check a figure with the PAYE calculator",
+        title: "Check a figure with the PAYE calculator, in Nigeria",
         where: ["Accounts", "Payroll", "PAYE Calculator"],
         roles: [...BOOKS, "auditor"],
         steps: ["Enter an annual gross pay and the annual rent paid.", "Choose **Calculate** to see each step, from the component split to tax by band."],
@@ -500,15 +541,15 @@ export const DOC_GUIDES: DocGuide[] = [
         where: ["Accounts", "Payroll", "Country Compliance"],
         roles: [...BOOKS, "auditor"],
         intro:
-          "The catalogue lists every country Plutus supports, with its currency, tax authority and status. Payroll runs only where a country's rules are approved. Today that is Nigeria. Your organisation's country is set in Setup & Onboarding.",
+          "The catalogue lists every country Plutus supports, with its currency, tax authority and status. All six are active for payroll. Your organisation's country is chosen at sign-up, and can change in Setup & Onboarding until the first pay run or posted journal.",
         points: [
-          "**Active**: the rules are approved, and payroll and tax calculations run.",
-          "**Draft**: the rules are written up with their sources and wait for review by a tax adviser in that country.",
-          "**Awaiting review**: the adviser is checking them.",
+          "**Active**: the rules are approved, and payroll runs on them.",
+          "**Draft**: the rules are written up with their sources and wait for review.",
+          "**Awaiting review**: they are being checked.",
           "**Setup required**: nothing is drafted yet.",
         ],
-        note: "A country's rules can go live only when every rule cites the law or the tax authority's own publication, a tax adviser has reviewed them, and someone other than the person who prepared them has approved them.",
-        shots: [shot("countries", "The Country Compliance catalogue", "Nigeria is active; the other five are drafts awaiting approved rules.")],
+        note: "Nigeria runs on its own rule versions. The other five run on rule sets Plutus Technologies approved from published sources, without a local tax adviser's review, with the open figures entered under Tax Settings. Their VAT and withholding tax aren't approved yet, so Plutus doesn't calculate them.",
+        shots: [shot("countries", "The Country Compliance catalogue", "All six countries are active for payroll.")],
       },
     ],
   },
@@ -525,9 +566,9 @@ export const DOC_GUIDES: DocGuide[] = [
         roles: BOOKS,
         steps: [
           "Choose **New Employee**.",
-          "Under **Identity & Employment**, enter the employee number, full name, state of residence, employment type and date of joining. Add their job title, manager and branch.",
+          "Under **Identity & Employment**, enter the employee number, full name, state or region of residence, employment type and date of joining. Add their job title, manager and branch.",
           "Under **Pay Components**, enter the basic, housing and transport pay and any other earnings for one pay period, as shown on the record and payslips. Add the annual rent they pay, for rent relief.",
-          "Under **Statutory & Compliance**, enter their TIN, pension fund administrator, RSA PIN and NHF number.",
+          "Under **Statutory & Compliance**, enter their tax ID. In Nigeria, add their pension fund administrator, RSA PIN and NHF number. Elsewhere, record their **Family shares (in halves)** and **Expatriate status** if your country's rules use them.",
           "Choose **Create Employee**. To add many people at once, use **Bulk Import** and paste a CSV with the same columns.",
         ],
         note: "The form labels the pay fields “Annual”, but Plutus uses them as the amounts for each pay period. For someone paid monthly, enter their monthly basic, housing and transport.",
@@ -662,7 +703,8 @@ export const DOC_GUIDES: DocGuide[] = [
           "Plutus Desktop runs its own database on your computer. It needs no internet connection, and your data stays on your machine.",
           "To update, download the new installer and run it. It installs over the previous version and keeps your data.",
           "On Windows, the installer stops a running Plutus before replacing it.",
-          "Since build 42 (October 2026), Desktop has every screen in these guides, including Analytics & Insights, Country Compliance and the choice of country at sign-up. If you installed an earlier build, update to get them.",
+          "Since build 42 (October 2026), Desktop has Analytics & Insights, Country Compliance and the choice of country at sign-up. If you installed an earlier build, update to get them.",
+          "The current release, build 43, runs payroll for Nigeria only. Tax Settings, and payroll in Ghana, Kenya, Rwanda, The Gambia and Côte d'Ivoire, are in Plutus Cloud and not yet in Desktop.",
         ],
       },
     ],

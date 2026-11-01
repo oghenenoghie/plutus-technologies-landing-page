@@ -86,14 +86,18 @@ export const FEATURE_PAGES = [
     href: "/payroll",
     title: "Payroll & HR",
     blurb: "Pay runs, statutory deductions and the people records payroll depends on, in the same system as the books.",
-    points: ["PAYE, pension, NHF, NSITF and ITF", "Final settlement and simulation", "Leave, attendance and self-service"],
+    points: ["Payroll in six countries", "PAYE, pension, NHF, NSITF and ITF in Nigeria", "Leave, attendance and self-service"],
   },
   {
     href: "/countries",
     title: "Country compliance",
     isNew: true,
-    blurb: "A catalogue of supported jurisdictions, each with its currency, tax authority and readiness.",
-    points: ["Nigeria active", "Five more countries catalogued", "No rate used until it is sourced and approved"],
+    blurb: "Payroll in six countries, each on dated rules in its own currency, with every figure's source shown.",
+    points: [
+      "Nigeria, Ghana, Kenya, Rwanda, The Gambia, Côte d'Ivoire",
+      "Tax Settings for figures the sources leave open",
+      "No approved rule, no calculation",
+    ],
   },
   {
     href: "/editions",
