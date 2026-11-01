@@ -88,7 +88,8 @@ export default function DocsPage() {
           <ul className="gold-list self-start text-ink-2">
             <li>
               <span>
-                The screenshots come from Plutus Cloud, set up for a fictional company, Sample Trading Ltd. Every name and
+                The screenshots come from Plutus Cloud, set up for two fictional companies, Sample Trading Ltd in Nigeria
+                and Sample Trading Kenya Ltd. Every name and
                 figure in them is sample data.
               </span>
             </li>
@@ -97,7 +98,8 @@ export default function DocsPage() {
             </li>
             <li>
               <span>
-                Plutus Desktop has the same screens, including Analytics &amp; Insights and Country Compliance since build 42.
+                Plutus Desktop has the same screens, except Tax Settings: its current release (build 43) runs payroll for
+                Nigeria only.
               </span>
             </li>
             <li>

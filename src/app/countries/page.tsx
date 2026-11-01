@@ -6,7 +6,7 @@ export async function generateMetadata() {
   return pageMetadata({
     title: "Country compliance",
     description:
-      "Plutus is live in Nigeria. Ghana, Kenya, Rwanda, The Gambia and Côte d'Ivoire are catalogued and go live as their tax rules are sourced and approved.",
+      "Plutus runs payroll in Nigeria, Ghana, Kenya, Rwanda, The Gambia and Côte d'Ivoire, each on dated rules in its own currency, with the figures the sources leave open entered by each company.",
     path: "/countries",
   });
 }
@@ -14,9 +14,10 @@ export async function generateMetadata() {
 export default function CountriesPage() {
   return (
     <main id="top">
-      <PageIntro eyebrow="Country compliance" isNew title="Nigeria today. More countries as their rules are approved.">
-        Plutus keeps a catalogue of the jurisdictions it supports, each with its currency, tax authority and readiness.
-        Nigeria is live; five more are catalogued and are not yet available.
+      <PageIntro eyebrow="Country compliance" isNew title="Payroll in six countries.">
+        Nigeria runs on its own rule versions. Ghana, Kenya, Rwanda, The Gambia and Côte d&apos;Ivoire run on rule sets
+        built from published sources, and each company enters the few figures those sources leave open. VAT and
+        withholding tax for those five aren&apos;t approved yet.
       </PageIntro>
       <CountryCatalogue />
       <CountryRules />

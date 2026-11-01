@@ -88,6 +88,29 @@ const SHOTS = [
     act: (p) => mark(p.locator("main select").first().locator("xpath=ancestor::div[contains(@class,'flex') or contains(@class,'grid')][1]")),
   }],
   ["analytics-reports", "/analytics/reports"],
+  // Sample Trading Kenya Ltd (seed_kenya.py): a country on the rule engine.
+  ["tax-settings", "/tax-settings", { as: "ke", act: (p) => mark(p.locator("main select").first()) }],
+  ["tax-settings-rules", "/tax-settings", {
+    as: "ke",
+    act: async (p) => {
+      await p.getByText("The rules as they stand today", { exact: true }).first().evaluate((el) => el.scrollIntoView({ block: "start" }));
+      await p.waitForTimeout(500);
+    },
+  }],
+  ["payroll-derivation-ke", `/payroll/${state.ke_pay_runs?.[state.ke_pay_runs.length - 1]}`, {
+    as: "ke",
+    act: async (p) => {
+      await p.setViewportSize({ width: 1440, height: 1150 });
+      await p.getByRole("button", { name: /how\?/ }).first().click();
+      await p.waitForTimeout(800);
+    },
+    // Only the breakdown panel, from Gross Pay to Net Pay, as for Nigeria.
+    clip: async (p) => {
+      const top = await p.getByText("Gross Pay", { exact: true }).first().boundingBox();
+      const net = await p.getByText("Net Pay", { exact: true }).first().boundingBox();
+      return { x: Math.floor(top.x) - 16, y: Math.floor(top.y) - 20, width: 532, height: Math.ceil(net.y + net.height + 30 - top.y + 20) };
+    },
+  }],
 ];
 
 (async () => {
@@ -95,19 +118,25 @@ const SHOTS = [
   const browser = await chromium.launch();
   const options = { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2, colorScheme: "light" };
   const anon = await browser.newContext(options);
-  const signedIn = await browser.newContext(options);
-  const login = await signedIn.newPage();
-  await login.goto(BASE + "/login");
-  await login.fill("#identifier", "admin@example.com");
-  await login.fill("#password", "Sample-pass-2026!");
-  await login.click('button[type="submit"]');
-  await login.waitForURL((u) => !u.pathname.startsWith("/login"), { timeout: 30000 });
-  await login.close();
+  async function signIn(email) {
+    const context = await browser.newContext(options);
+    const login = await context.newPage();
+    await login.goto(BASE + "/login");
+    await login.fill("#identifier", email);
+    await login.fill("#password", "Sample-pass-2026!");
+    await login.click('button[type="submit"]');
+    await login.waitForURL((u) => !u.pathname.startsWith("/login"), { timeout: 30000 });
+    await login.close();
+    return context;
+  }
+  const contexts = { ng: await signIn("admin@example.com") };
+  if (state.ke_pay_runs) contexts.ke = await signIn("admin-ke@example.com");
 
   let failed = 0;
   for (const [name, route, o = {}] of SHOTS) {
     if (only && !only.split(",").includes(name)) continue;
-    const page = await (o.anon ? anon : signedIn).newPage();
+    if (o.as && !contexts[o.as]) continue;
+    const page = await (o.anon ? anon : contexts[o.as ?? "ng"]).newPage();
     try {
       await page.goto(BASE + route, { waitUntil: "networkidle", timeout: 45000 });
       await page.waitForTimeout(1200);
