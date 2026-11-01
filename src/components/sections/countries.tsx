@@ -59,7 +59,8 @@ export function CountryCatalogue() {
           </div>
           <p className="border-t border-line bg-sunk px-5 py-3.5 text-sm text-ink-2">
             Nigeria runs on its own rule versions. The other five run on rule sets Plutus Technologies approved on 27 October
-            2026 from published sources, before review by a local tax adviser.
+            2026 from published sources, before review by a local tax adviser.{" "}
+            <a href="/docs/tax-rules">See every country&apos;s bands, contributions, Tax Settings and sources.</a>
           </p>
         </div>
       </div>
