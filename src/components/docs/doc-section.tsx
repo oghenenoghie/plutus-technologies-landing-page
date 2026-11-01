@@ -1,3 +1,4 @@
+import { CountryTaxRules } from "@/components/docs/country-tax-rules";
 import { DocFigure } from "@/components/docs/doc-figure";
 import { DocText } from "@/components/docs/doc-text";
 import { Chip } from "@/components/ui/pill";
@@ -96,6 +97,8 @@ export function DocSectionView({ section, first }: { section: DocSection; first?
           <DocText>{s.note}</DocText>
         </p>
       ) : null}
+
+      {s.rules ? <CountryTaxRules country={s.rules} /> : null}
 
       {s.shots?.map((shot, i) => <DocFigure key={shot.src} shot={shot} priority={first && i === 0} />)}
     </section>

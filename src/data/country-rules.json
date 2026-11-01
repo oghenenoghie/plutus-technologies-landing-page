@@ -1,0 +1,2903 @@
+{
+  "source": {
+    "repository": "plutus-hr-system",
+    "commit": "fb07dcc"
+  },
+  "nigeria": {
+    "id": "NG-2026.1",
+    "country": "NG",
+    "effective_from": "2026-01-01",
+    "effective_to": null,
+    "paye": {
+      "bands": [
+        {
+          "up_to_minor": 80000000,
+          "rate_ppm": 0
+        },
+        {
+          "up_to_minor": 300000000,
+          "rate_ppm": 150000
+        },
+        {
+          "up_to_minor": 1200000000,
+          "rate_ppm": 180000
+        },
+        {
+          "up_to_minor": 2500000000,
+          "rate_ppm": 210000
+        },
+        {
+          "up_to_minor": 5000000000,
+          "rate_ppm": 230000
+        },
+        {
+          "up_to_minor": null,
+          "rate_ppm": 250000
+        }
+      ],
+      "tax_free_threshold_minor": 80000000,
+      "rent_relief_rate_ppm": 200000,
+      "rent_relief_cap_minor": 50000000,
+      "authority": "STATE_IRS",
+      "due_day_of_following_month": 10
+    },
+    "pension": {
+      "employee_rate_ppm": 80000,
+      "employer_rate_ppm": 100000,
+      "borne_by": "both",
+      "authority": "PFA",
+      "due_working_days_after_payment": 7
+    },
+    "nhf": {
+      "rate_ppm": 25000,
+      "borne_by": "employee",
+      "authority": "FMBN",
+      "due_days_after_payment": 30
+    },
+    "nsitf": {
+      "rate_ppm": 10000,
+      "borne_by": "employer",
+      "authority": "NSITF",
+      "due_day_of_following_month": 16
+    },
+    "itf": {
+      "rate_ppm": 10000,
+      "borne_by": "employer",
+      "authority": "ITF",
+      "due_month": 4,
+      "due_day": 1
+    },
+    "wht": {
+      "categories": [
+        {
+          "category": "goods",
+          "rate_ppm": 50000
+        },
+        {
+          "category": "services",
+          "rate_ppm": 100000
+        }
+      ],
+      "authority": "NRS",
+      "due_day_of_following_month": 21
+    }
+  },
+  "rule_sets": [
+    {
+      "id": "GM-2026.1",
+      "country": "GM",
+      "country_name": "The Gambia",
+      "currency": "GMD",
+      "exponent": 2,
+      "effective_from": "2026-01-01",
+      "effective_to": null,
+      "tax_year_start_month": 1,
+      "frequencies": [
+        "monthly"
+      ],
+      "approval": {
+        "basis": "owner_approved",
+        "approved_by": "Plutus Technologies",
+        "approved_on": "2026-10-27",
+        "reviewed_by": null
+      },
+      "summary": [
+        "The Gambia, from January 2026.",
+        "Built in: GRA's PAYE rates and its GMD 3,000 monthly threshold, NPF at 5% employee and 10% employer on basic salary, and the IICF's 1% capped at GMD 15. Entered by each organisation: the monthly PAYE band limits above the threshold (GRA publishes annual bands), whether NPF is deductible before PAYE, what \"total earnings\" means for the IICF and when it's due, and whether the organisation is in the Federated Pension Scheme.",
+        "Not modelled: fringe benefits tax (Plutus doesn't record benefits in kind) and the expatriate quota (an annual per-person charge)."
+      ],
+      "income_tax": {
+        "code": "PAYE",
+        "name": "PAYE",
+        "authority": "Gambia Revenue Authority",
+        "method": "per_period",
+        "bands": [
+          {
+            "up_to_minor": 300000,
+            "rate_ppm": 0
+          },
+          {
+            "up_to_minor": 383333,
+            "rate_ppm": 50000
+          },
+          {
+            "up_to_minor": 466667,
+            "rate_ppm": 100000
+          },
+          {
+            "up_to_minor": 550000,
+            "rate_ppm": 150000
+          },
+          {
+            "up_to_minor": 633333,
+            "rate_ppm": 200000
+          },
+          {
+            "up_to_minor": null,
+            "rate_ppm": 250000
+          }
+        ],
+        "due": "Day 15 of the following month",
+        "source": "gra-employment-income-tax-brochure",
+        "band_rounding": "total",
+        "taxable": [
+          "basic",
+          "fixed_allowance",
+          "housing",
+          "other",
+          "transport",
+          "variable"
+        ],
+        "deduction_caps": [
+          {
+            "group": "npf",
+            "cap_minor": null
+          }
+        ],
+        "reliefs": [],
+        "variable": {
+          "band.1.up_to_minor": {
+            "paye_5_band_limit": [
+              383333
+            ]
+          },
+          "band.2.up_to_minor": {
+            "paye_10_band_limit": [
+              466667
+            ]
+          },
+          "band.3.up_to_minor": {
+            "paye_15_band_limit": [
+              550000
+            ]
+          },
+          "band.4.up_to_minor": {
+            "paye_20_band_limit": [
+              633333
+            ]
+          }
+        }
+      },
+      "lines": [
+        {
+          "code": "NPF",
+          "name": "National Provident Fund",
+          "kind": "employee_contribution",
+          "authority": "Social Security and Housing Finance Corporation",
+          "base": "Basic salary",
+          "rate_ppm": 50000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": true,
+          "due": "Day 15 of the following month",
+          "source": "sshfc-overview",
+          "base_floor_minor": 0,
+          "tax_deduction_group": "npf",
+          "variable": {
+            "tax_deductible": {
+              "npf_tax_deductible": [
+                true,
+                false
+              ]
+            }
+          }
+        },
+        {
+          "code": "NPF-ER",
+          "name": "National Provident Fund (employer)",
+          "kind": "employer_contribution",
+          "authority": "Social Security and Housing Finance Corporation",
+          "base": "Basic salary",
+          "rate_ppm": 100000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "nao-sshfc-audit",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {}
+        },
+        {
+          "code": "IICF",
+          "name": "Industrial Injury Compensation Fund",
+          "kind": "employer_contribution",
+          "authority": "Social Security and Housing Finance Corporation",
+          "base": "Basic salary plus fixed allowances",
+          "rate_ppm": 10000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": 1500,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "sshfc-iicf",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base": {
+              "iicf_base": [
+                "Basic salary plus fixed allowances",
+                "Gross pay"
+              ]
+            },
+            "due": {
+              "iicf_due_day": null
+            }
+          }
+        },
+        {
+          "code": "FPS",
+          "name": "Federated Pension Scheme",
+          "kind": "employer_contribution",
+          "authority": "Social Security and Housing Finance Corporation",
+          "base": "Basic salary plus fixed allowances",
+          "rate_ppm": 150000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "nao-sshfc-audit",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "present": {
+              "fps_applies": [
+                true,
+                false
+              ]
+            },
+            "due": {
+              "fps_due_day": null
+            }
+          }
+        }
+      ],
+      "settings": [
+        {
+          "key": "paye_5_band_limit",
+          "label": "Monthly PAYE: upper limit of the 5% band",
+          "help": "GRA publishes the 5% band as ending at GMD 46,000 a year; its monthly table wasn't found. Enter the monthly limit you apply, for example the annual figure divided by 12.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GMD 46,000 ÷ 12",
+              "source": "GRA annual band, divided by 12",
+              "display": "3,833.33 GMD"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "income tax"
+          ]
+        },
+        {
+          "key": "paye_10_band_limit",
+          "label": "Monthly PAYE: upper limit of the 10% band",
+          "help": "GRA publishes the 10% band as ending at GMD 56,000 a year; its monthly table wasn't found. Enter the monthly limit you apply, for example the annual figure divided by 12.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GMD 56,000 ÷ 12",
+              "source": "GRA annual band, divided by 12",
+              "display": "4,666.67 GMD"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "income tax"
+          ]
+        },
+        {
+          "key": "paye_15_band_limit",
+          "label": "Monthly PAYE: upper limit of the 15% band",
+          "help": "GRA publishes the 15% band as ending at GMD 66,000 a year; its monthly table wasn't found. Enter the monthly limit you apply, for example the annual figure divided by 12.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GMD 66,000 ÷ 12",
+              "source": "GRA annual band, divided by 12",
+              "display": "5,500.00 GMD"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "income tax"
+          ]
+        },
+        {
+          "key": "paye_20_band_limit",
+          "label": "Monthly PAYE: upper limit of the 20% band",
+          "help": "GRA publishes the 20% band as ending at GMD 76,000 a year; its monthly table wasn't found. Enter the monthly limit you apply, for example the annual figure divided by 12.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GMD 76,000 ÷ 12",
+              "source": "GRA annual band, divided by 12",
+              "display": "6,333.33 GMD"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "income tax"
+          ]
+        },
+        {
+          "key": "npf_tax_deductible",
+          "label": "Is the employee's NPF contribution deducted before PAYE?",
+          "help": "No source found says whether the employee's 5% NPF contribution comes off pay before PAYE.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Yes",
+              "source": "Your organisation's practice",
+              "display": "Yes"
+            },
+            {
+              "label": "No",
+              "source": "Your organisation's practice",
+              "display": "No"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "NPF"
+          ]
+        },
+        {
+          "key": "iicf_base",
+          "label": "What the IICF's 1% is charged on",
+          "help": "SSHFC says 1% of \"total earnings\" without defining them; one guide says basic salary plus fixed allowances.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Basic salary plus fixed allowances",
+              "source": "Payroll guide (Africarrières)",
+              "display": "Basic salary plus fixed allowances"
+            },
+            {
+              "label": "All cash earnings",
+              "source": "SSHFC: \"total earnings\"",
+              "display": "All cash earnings"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "IICF"
+          ]
+        },
+        {
+          "key": "iicf_due_day",
+          "label": "Day of the following month the IICF contribution is due",
+          "help": "No source found gives the IICF deadline.",
+          "kind": "day",
+          "options": [],
+          "minimum": "1",
+          "maximum": "28",
+          "required_when": null,
+          "affects": [
+            "IICF"
+          ]
+        },
+        {
+          "key": "fps_applies",
+          "label": "Is your organisation in the Federated Pension Scheme?",
+          "help": "SSHFC's Federated Pension Scheme is 15% of gross salary (basic plus fixed allowances), paid by the employer. Which employers it covers wasn't found.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Yes",
+              "source": "SSHFC; National Audit Office report",
+              "display": "Yes"
+            },
+            {
+              "label": "No",
+              "source": "Your organisation isn't in the scheme",
+              "display": "No"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "FPS"
+          ]
+        },
+        {
+          "key": "fps_due_day",
+          "label": "Day of the following month the Federated Pension Scheme contribution is due",
+          "help": "No source found gives the Federated Pension Scheme deadline.",
+          "kind": "day",
+          "options": [],
+          "minimum": "1",
+          "maximum": "28",
+          "required_when": {
+            "key": "fps_applies",
+            "value": "yes"
+          },
+          "affects": [
+            "FPS"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "gra-employment-income-tax-brochure",
+          "title": "GRA, employment income tax brochure: 0% to 25%, bands at GMD 36,000, 46,000, 56,000, 66,000 and 76,000 a year, as at January 2018 (quoted by search)",
+          "reference": "https://www.gra.gm/download-file/8d0ccc58-d217-11ed-9b31-029254d29bb1",
+          "official": true
+        },
+        {
+          "id": "gra-domestic-faqs",
+          "title": "GRA, Domestic taxes FAQs: tax-free GMD 36,000 a year, GMD 3,000 a month (quoted by search)",
+          "reference": "https://www.gra.gm/domestic-faqs",
+          "official": true
+        },
+        {
+          "id": "sshfc-overview",
+          "title": "SSHFC, overview: NPF employee contribution 5% of basic salary (quoted by search)",
+          "reference": "https://www.sshfc.gm/overview",
+          "official": true
+        },
+        {
+          "id": "nao-sshfc-audit",
+          "title": "National Audit Office, performance audit of SSHFC: NPF employer 10%; Federated Pension Scheme 15% of gross salary, employer-paid",
+          "reference": "https://nao.gm/wp-content/uploads/2023/04/Performance-Audit-Report-on-the-Management-of-Social-Security-Funds-by-SSHFC.pdf",
+          "official": true
+        },
+        {
+          "id": "sshfc-iicf",
+          "title": "SSHFC, Industrial Injury Compensation Fund: 1% of total earnings, ceiling GMD 15, employer-paid (quoted by search)",
+          "reference": "https://www.sshfc.gm/industrial-injury-compensation-fund",
+          "official": true
+        },
+        {
+          "id": "gm-due-dates",
+          "title": "Afrotools, Gambia employer payroll compliance 2026: PAYE and NPF due by the 15th",
+          "reference": "https://afrotools.com/blog/gambia-employer-payroll-compliance-2026/",
+          "official": false
+        },
+        {
+          "id": "company-settings",
+          "title": "Entered by your organisation under Tax Settings",
+          "reference": "Plutus Tax Settings",
+          "official": false
+        }
+      ]
+    },
+    {
+      "id": "RW-2026.1",
+      "country": "RW",
+      "country_name": "Rwanda",
+      "currency": "RWF",
+      "exponent": 0,
+      "effective_from": "2026-01-01",
+      "effective_to": "2027-01-01",
+      "tax_year_start_month": 1,
+      "frequencies": [
+        "monthly"
+      ],
+      "approval": {
+        "basis": "owner_approved",
+        "approved_by": "Plutus Technologies",
+        "approved_on": "2026-10-27",
+        "reviewed_by": null
+      },
+      "summary": [
+        "Rwanda, 2026 and 2027.",
+        "Built in: the four-band PAYE schedule of Law No. 027/2022 (0%, 10%, 20% and 30%, with cut-offs at RWF 60,000, 100,000 and 200,000 a month; the three-band schedule some guides still show was the law's first year only), RSSB pension on gross pay including transport (6% employee and 6% employer in 2026; 14% in all from 1 January 2027, under Presidential Order No. 086/01 of 2024), RSSB maternity leave at 0.3% from the employer, CBHI at 0.5% of the employee's net pay (RRA, citing Prime Minister's Order No. 034/01 of 2020), and the 15th as the deadline for PAYE, RSSB and CBHI. Entered by each organisation: whether RSSB contributions are deducted before PAYE, the employee's maternity rate (sources disagree), what maternity and occupational hazards are charged on, the occupational hazards rate (sources disagree), and, from 2027, the employee's share of the 14% pension (the order doesn't divide it; the employer pays the rest).",
+        "Pension rises again to 16% in January 2028, so 2028 periods are refused until a rule set for 2028 is added."
+      ],
+      "income_tax": {
+        "code": "PAYE",
+        "name": "PAYE",
+        "authority": "Rwanda Revenue Authority",
+        "method": "per_period",
+        "bands": [
+          {
+            "up_to_minor": 60000,
+            "rate_ppm": 0
+          },
+          {
+            "up_to_minor": 100000,
+            "rate_ppm": 100000
+          },
+          {
+            "up_to_minor": 200000,
+            "rate_ppm": 200000
+          },
+          {
+            "up_to_minor": null,
+            "rate_ppm": 300000
+          }
+        ],
+        "due": "Day 15 of the following month",
+        "source": "rw-paye-bands",
+        "band_rounding": "total",
+        "taxable": [
+          "basic",
+          "fixed_allowance",
+          "housing",
+          "other",
+          "transport",
+          "variable"
+        ],
+        "deduction_caps": [],
+        "reliefs": [],
+        "variable": {}
+      },
+      "lines": [
+        {
+          "code": "RSSB-PENSION",
+          "name": "RSSB pension",
+          "kind": "employee_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 60000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "rw-pension-2025",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "tax_deductible": {
+              "rssb_tax_deductible": [
+                false,
+                true
+              ]
+            }
+          }
+        },
+        {
+          "code": "RSSB-PENSION-ER",
+          "name": "RSSB pension (employer)",
+          "kind": "employer_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 60000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "rw-pension-2025",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {}
+        },
+        {
+          "code": "RSSB-MATERNITY",
+          "name": "RSSB maternity leave",
+          "kind": "employee_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 3000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "tax_deductible": {
+              "rssb_tax_deductible": [
+                false,
+                true
+              ]
+            },
+            "present": {
+              "maternity_employee_rate": [
+                true,
+                false
+              ]
+            },
+            "base": {
+              "maternity_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            }
+          }
+        },
+        {
+          "code": "RSSB-MATERNITY-ER",
+          "name": "RSSB maternity leave (employer)",
+          "kind": "employer_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 3000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "rw-maternity",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base": {
+              "maternity_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            }
+          }
+        },
+        {
+          "code": "RSSB-HAZARDS-ER",
+          "name": "RSSB occupational hazards (employer)",
+          "kind": "employer_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 20000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "rate_ppm": {
+              "occupational_hazards_rate": [
+                20000,
+                10000,
+                5000
+              ]
+            },
+            "base": {
+              "occupational_hazards_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            }
+          }
+        },
+        {
+          "code": "CBHI",
+          "name": "Community-based health insurance",
+          "kind": "employee_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Net pay",
+          "rate_ppm": 5000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "rra-cbhi",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {}
+        }
+      ],
+      "settings": [
+        {
+          "key": "rssb_tax_deductible",
+          "label": "Are the employee's RSSB pension and maternity contributions deducted before PAYE?",
+          "help": "No statute found says. One payroll vendor works out PAYE on gross pay and takes the contributions off afterwards, but that is its method, not the law.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "No",
+              "source": "One payroll vendor's method",
+              "display": "No"
+            },
+            {
+              "label": "Yes",
+              "source": "Your organisation's practice",
+              "display": "Yes"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-MATERNITY",
+            "RSSB-PENSION"
+          ]
+        },
+        {
+          "key": "maternity_employee_rate",
+          "label": "Employee's RSSB maternity leave rate",
+          "help": "Most sources give 0.3% from the employee as well as 0.3% from the employer; one gives 0% from the employee.",
+          "kind": "percent",
+          "options": [
+            {
+              "label": "0.3%",
+              "source": "Most sources",
+              "display": "0.3%"
+            },
+            {
+              "label": "0%",
+              "source": "One source",
+              "display": "0%"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-MATERNITY"
+          ]
+        },
+        {
+          "key": "maternity_base",
+          "label": "What RSSB maternity leave is charged on",
+          "help": "No source found gives the base for maternity leave contributions.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Gross pay, as for RSSB pension",
+              "source": "Your organisation's practice: no source gives the maternity base",
+              "display": "Gross pay, as for RSSB pension"
+            },
+            {
+              "label": "Basic salary plus fixed allowances",
+              "source": "Your organisation's practice: no source gives the maternity base",
+              "display": "Basic salary plus fixed allowances"
+            },
+            {
+              "label": "Basic salary",
+              "source": "Your organisation's practice: no source gives the maternity base",
+              "display": "Basic salary"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-MATERNITY",
+            "RSSB-MATERNITY-ER"
+          ]
+        },
+        {
+          "key": "occupational_hazards_rate",
+          "label": "Employer's occupational hazards rate",
+          "help": "Sources disagree: 2%, 1% or 0.5%, paid by the employer.",
+          "kind": "percent",
+          "options": [
+            {
+              "label": "2%",
+              "source": "Secondary source",
+              "display": "2%"
+            },
+            {
+              "label": "1%",
+              "source": "Secondary source",
+              "display": "1%"
+            },
+            {
+              "label": "0.5%",
+              "source": "Secondary source",
+              "display": "0.5%"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-HAZARDS-ER"
+          ]
+        },
+        {
+          "key": "occupational_hazards_base",
+          "label": "What occupational hazards contributions are charged on",
+          "help": "No source found gives the base for occupational hazards contributions.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Gross pay, as for RSSB pension",
+              "source": "Your organisation's practice: no source gives the occupational hazards base",
+              "display": "Gross pay, as for RSSB pension"
+            },
+            {
+              "label": "Basic salary plus fixed allowances",
+              "source": "Your organisation's practice: no source gives the occupational hazards base",
+              "display": "Basic salary plus fixed allowances"
+            },
+            {
+              "label": "Basic salary",
+              "source": "Your organisation's practice: no source gives the occupational hazards base",
+              "display": "Basic salary"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-HAZARDS-ER"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "rw-paye-bands",
+          "title": "Law No. 027/2022 on taxes on income, four-bracket schedule from November 2023, as reported (Orbitax; PwC Worldwide Tax Summaries)",
+          "reference": "https://taxsummaries.pwc.com/rwanda/individual/taxes-on-personal-income",
+          "official": false
+        },
+        {
+          "id": "rw-pension-2025",
+          "title": "RSSB pension 6% employee and 6% employer on gross pay including transport, from January 2025, as reported (Sage, PaySpace, The New Times)",
+          "reference": "https://support.payspace.com/portal/en/kb/articles/rwanda-pension-reforms-effective-january-2025",
+          "official": false
+        },
+        {
+          "id": "rw-maternity",
+          "title": "RSSB maternity leave 0.3% employer; employee 0.3% in most sources, 0% in one, as reported (payroll guides)",
+          "reference": "https://www.playroll.com/payroll/rwanda",
+          "official": false
+        },
+        {
+          "id": "rra-cbhi",
+          "title": "RRA, CBHI contribution: under Prime Minister's Order No. 034/01 of 13/01/2020, the employee contributes 0.5% of net salary, deducted and paid by the employer",
+          "reference": "https://www.rra.gov.rw/en/domestic-tax-services/rssb-contributions/cbhi-contribution",
+          "official": true
+        },
+        {
+          "id": "ey-cbhi-2020",
+          "title": "EY, Rwanda establishes subsidy contributions from employees for the community-based health insurance scheme: remitted to RSSB by the 15th of the following month",
+          "reference": "https://globaltaxnews.ey.com/news/2020-5351-rwanda-establishes-subsidy-contributions-from-employees-for-community-based-health-insurance-scheme",
+          "official": false
+        },
+        {
+          "id": "rw-due-dates",
+          "title": "PAYE and RSSB contributions declared to RRA by the 15th of the following month, as reported (several secondary sources)",
+          "reference": "https://www.rivermate.com/guides/rwanda/taxes",
+          "official": false
+        },
+        {
+          "id": "rw-pension-order-2024",
+          "title": "Presidential Order No. 086/01 of 12 December 2024 on the pension scheme: contributions of 12% from 1 January 2025 and 14% from 1 January 2027 (official text, ILO NATLEX copy)",
+          "reference": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/117567/RWA-117567.pdf",
+          "official": true
+        },
+        {
+          "id": "rssb-faq",
+          "title": "RSSB, Frequently asked questions: employer and employee contribute equally to the pension scheme",
+          "reference": "https://www.rssb.rw/uploads/RSSB_FAQS_All_languages_2_760b75b195.pdf",
+          "official": true
+        },
+        {
+          "id": "company-settings",
+          "title": "Entered by your organisation under Tax Settings",
+          "reference": "Plutus Tax Settings",
+          "official": false
+        }
+      ]
+    },
+    {
+      "id": "RW-2027.1",
+      "country": "RW",
+      "country_name": "Rwanda",
+      "currency": "RWF",
+      "exponent": 0,
+      "effective_from": "2027-01-01",
+      "effective_to": "2028-01-01",
+      "tax_year_start_month": 1,
+      "frequencies": [
+        "monthly"
+      ],
+      "approval": {
+        "basis": "owner_approved",
+        "approved_by": "Plutus Technologies",
+        "approved_on": "2026-10-27",
+        "reviewed_by": null
+      },
+      "summary": [
+        "Rwanda, 2026 and 2027.",
+        "Built in: the four-band PAYE schedule of Law No. 027/2022 (0%, 10%, 20% and 30%, with cut-offs at RWF 60,000, 100,000 and 200,000 a month; the three-band schedule some guides still show was the law's first year only), RSSB pension on gross pay including transport (6% employee and 6% employer in 2026; 14% in all from 1 January 2027, under Presidential Order No. 086/01 of 2024), RSSB maternity leave at 0.3% from the employer, CBHI at 0.5% of the employee's net pay (RRA, citing Prime Minister's Order No. 034/01 of 2020), and the 15th as the deadline for PAYE, RSSB and CBHI. Entered by each organisation: whether RSSB contributions are deducted before PAYE, the employee's maternity rate (sources disagree), what maternity and occupational hazards are charged on, the occupational hazards rate (sources disagree), and, from 2027, the employee's share of the 14% pension (the order doesn't divide it; the employer pays the rest).",
+        "Pension rises again to 16% in January 2028, so 2028 periods are refused until a rule set for 2028 is added."
+      ],
+      "income_tax": {
+        "code": "PAYE",
+        "name": "PAYE",
+        "authority": "Rwanda Revenue Authority",
+        "method": "per_period",
+        "bands": [
+          {
+            "up_to_minor": 60000,
+            "rate_ppm": 0
+          },
+          {
+            "up_to_minor": 100000,
+            "rate_ppm": 100000
+          },
+          {
+            "up_to_minor": 200000,
+            "rate_ppm": 200000
+          },
+          {
+            "up_to_minor": null,
+            "rate_ppm": 300000
+          }
+        ],
+        "due": "Day 15 of the following month",
+        "source": "rw-paye-bands",
+        "band_rounding": "total",
+        "taxable": [
+          "basic",
+          "fixed_allowance",
+          "housing",
+          "other",
+          "transport",
+          "variable"
+        ],
+        "deduction_caps": [],
+        "reliefs": [],
+        "variable": {}
+      },
+      "lines": [
+        {
+          "code": "RSSB-PENSION",
+          "name": "RSSB pension",
+          "kind": "employee_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 70000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "rw-pension-order-2024",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "tax_deductible": {
+              "rssb_tax_deductible": [
+                false,
+                true
+              ]
+            },
+            "rate_ppm": {
+              "pension_employee_rate_2027": [
+                70000,
+                60000
+              ]
+            }
+          }
+        },
+        {
+          "code": "RSSB-PENSION-ER",
+          "name": "RSSB pension (employer)",
+          "kind": "employer_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 70000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "rw-pension-order-2024",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "rate_ppm": {
+              "pension_employee_rate_2027": [
+                70000,
+                80000
+              ]
+            }
+          }
+        },
+        {
+          "code": "RSSB-MATERNITY",
+          "name": "RSSB maternity leave",
+          "kind": "employee_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 3000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "tax_deductible": {
+              "rssb_tax_deductible": [
+                false,
+                true
+              ]
+            },
+            "present": {
+              "maternity_employee_rate": [
+                true,
+                false
+              ]
+            },
+            "base": {
+              "maternity_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            }
+          }
+        },
+        {
+          "code": "RSSB-MATERNITY-ER",
+          "name": "RSSB maternity leave (employer)",
+          "kind": "employer_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 3000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "rw-maternity",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base": {
+              "maternity_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            }
+          }
+        },
+        {
+          "code": "RSSB-HAZARDS-ER",
+          "name": "RSSB occupational hazards (employer)",
+          "kind": "employer_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Gross pay",
+          "rate_ppm": 20000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "rate_ppm": {
+              "occupational_hazards_rate": [
+                20000,
+                10000,
+                5000
+              ]
+            },
+            "base": {
+              "occupational_hazards_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            }
+          }
+        },
+        {
+          "code": "CBHI",
+          "name": "Community-based health insurance",
+          "kind": "employee_contribution",
+          "authority": "Rwanda Social Security Board",
+          "base": "Net pay",
+          "rate_ppm": 5000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "rra-cbhi",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {}
+        }
+      ],
+      "settings": [
+        {
+          "key": "rssb_tax_deductible",
+          "label": "Are the employee's RSSB pension and maternity contributions deducted before PAYE?",
+          "help": "No statute found says. One payroll vendor works out PAYE on gross pay and takes the contributions off afterwards, but that is its method, not the law.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "No",
+              "source": "One payroll vendor's method",
+              "display": "No"
+            },
+            {
+              "label": "Yes",
+              "source": "Your organisation's practice",
+              "display": "Yes"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-MATERNITY",
+            "RSSB-PENSION"
+          ]
+        },
+        {
+          "key": "maternity_employee_rate",
+          "label": "Employee's RSSB maternity leave rate",
+          "help": "Most sources give 0.3% from the employee as well as 0.3% from the employer; one gives 0% from the employee.",
+          "kind": "percent",
+          "options": [
+            {
+              "label": "0.3%",
+              "source": "Most sources",
+              "display": "0.3%"
+            },
+            {
+              "label": "0%",
+              "source": "One source",
+              "display": "0%"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-MATERNITY"
+          ]
+        },
+        {
+          "key": "maternity_base",
+          "label": "What RSSB maternity leave is charged on",
+          "help": "No source found gives the base for maternity leave contributions.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Gross pay, as for RSSB pension",
+              "source": "Your organisation's practice: no source gives the maternity base",
+              "display": "Gross pay, as for RSSB pension"
+            },
+            {
+              "label": "Basic salary plus fixed allowances",
+              "source": "Your organisation's practice: no source gives the maternity base",
+              "display": "Basic salary plus fixed allowances"
+            },
+            {
+              "label": "Basic salary",
+              "source": "Your organisation's practice: no source gives the maternity base",
+              "display": "Basic salary"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-MATERNITY",
+            "RSSB-MATERNITY-ER"
+          ]
+        },
+        {
+          "key": "occupational_hazards_rate",
+          "label": "Employer's occupational hazards rate",
+          "help": "Sources disagree: 2%, 1% or 0.5%, paid by the employer.",
+          "kind": "percent",
+          "options": [
+            {
+              "label": "2%",
+              "source": "Secondary source",
+              "display": "2%"
+            },
+            {
+              "label": "1%",
+              "source": "Secondary source",
+              "display": "1%"
+            },
+            {
+              "label": "0.5%",
+              "source": "Secondary source",
+              "display": "0.5%"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-HAZARDS-ER"
+          ]
+        },
+        {
+          "key": "occupational_hazards_base",
+          "label": "What occupational hazards contributions are charged on",
+          "help": "No source found gives the base for occupational hazards contributions.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Gross pay, as for RSSB pension",
+              "source": "Your organisation's practice: no source gives the occupational hazards base",
+              "display": "Gross pay, as for RSSB pension"
+            },
+            {
+              "label": "Basic salary plus fixed allowances",
+              "source": "Your organisation's practice: no source gives the occupational hazards base",
+              "display": "Basic salary plus fixed allowances"
+            },
+            {
+              "label": "Basic salary",
+              "source": "Your organisation's practice: no source gives the occupational hazards base",
+              "display": "Basic salary"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-HAZARDS-ER"
+          ]
+        },
+        {
+          "key": "pension_employee_rate_2027",
+          "label": "Employee's share of the 14% RSSB pension contribution in 2027",
+          "help": "Presidential Order No. 086/01 of 2024 raises the pension contribution to 14% from 1 January 2027 without dividing it between employer and employee. RSSB says both contribute equally (7% each); payroll guidance says an employer may instead pay the employee's increase (6% from the employee, 8% from the employer). The employer pays the rest of the 14%.",
+          "kind": "percent",
+          "options": [
+            {
+              "label": "7%, half each",
+              "source": "RSSB FAQ: employer and employee contribute equally",
+              "display": "7%"
+            },
+            {
+              "label": "6%, the employer pays the employee's increase",
+              "source": "Payroll guidance (Sage), as reported",
+              "display": "6%"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "RSSB-PENSION",
+            "RSSB-PENSION-ER"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "rw-paye-bands",
+          "title": "Law No. 027/2022 on taxes on income, four-bracket schedule from November 2023, as reported (Orbitax; PwC Worldwide Tax Summaries)",
+          "reference": "https://taxsummaries.pwc.com/rwanda/individual/taxes-on-personal-income",
+          "official": false
+        },
+        {
+          "id": "rw-pension-2025",
+          "title": "RSSB pension 6% employee and 6% employer on gross pay including transport, from January 2025, as reported (Sage, PaySpace, The New Times)",
+          "reference": "https://support.payspace.com/portal/en/kb/articles/rwanda-pension-reforms-effective-january-2025",
+          "official": false
+        },
+        {
+          "id": "rw-maternity",
+          "title": "RSSB maternity leave 0.3% employer; employee 0.3% in most sources, 0% in one, as reported (payroll guides)",
+          "reference": "https://www.playroll.com/payroll/rwanda",
+          "official": false
+        },
+        {
+          "id": "rra-cbhi",
+          "title": "RRA, CBHI contribution: under Prime Minister's Order No. 034/01 of 13/01/2020, the employee contributes 0.5% of net salary, deducted and paid by the employer",
+          "reference": "https://www.rra.gov.rw/en/domestic-tax-services/rssb-contributions/cbhi-contribution",
+          "official": true
+        },
+        {
+          "id": "ey-cbhi-2020",
+          "title": "EY, Rwanda establishes subsidy contributions from employees for the community-based health insurance scheme: remitted to RSSB by the 15th of the following month",
+          "reference": "https://globaltaxnews.ey.com/news/2020-5351-rwanda-establishes-subsidy-contributions-from-employees-for-community-based-health-insurance-scheme",
+          "official": false
+        },
+        {
+          "id": "rw-due-dates",
+          "title": "PAYE and RSSB contributions declared to RRA by the 15th of the following month, as reported (several secondary sources)",
+          "reference": "https://www.rivermate.com/guides/rwanda/taxes",
+          "official": false
+        },
+        {
+          "id": "rw-pension-order-2024",
+          "title": "Presidential Order No. 086/01 of 12 December 2024 on the pension scheme: contributions of 12% from 1 January 2025 and 14% from 1 January 2027 (official text, ILO NATLEX copy)",
+          "reference": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/117567/RWA-117567.pdf",
+          "official": true
+        },
+        {
+          "id": "rssb-faq",
+          "title": "RSSB, Frequently asked questions: employer and employee contribute equally to the pension scheme",
+          "reference": "https://www.rssb.rw/uploads/RSSB_FAQS_All_languages_2_760b75b195.pdf",
+          "official": true
+        },
+        {
+          "id": "company-settings",
+          "title": "Entered by your organisation under Tax Settings",
+          "reference": "Plutus Tax Settings",
+          "official": false
+        }
+      ]
+    },
+    {
+      "id": "KE-2026.1",
+      "country": "KE",
+      "country_name": "Kenya",
+      "currency": "KES",
+      "exponent": 2,
+      "effective_from": "2026-02-01",
+      "effective_to": null,
+      "tax_year_start_month": 1,
+      "frequencies": [
+        "monthly"
+      ],
+      "approval": {
+        "basis": "owner_approved",
+        "approved_by": "Plutus Technologies",
+        "approved_on": "2026-10-27",
+        "reviewed_by": null
+      },
+      "summary": [
+        "Kenya, from February 2026 (NSSF Year 4 rates).",
+        "Built in: the PAYE bands and personal relief, what's deductible before PAYE under KRA's December 2024 notice, NSSF, SHIF, the Affordable Housing Levy and the NITA levy's amount. Entered by each organisation: whether NSSF is deductible before PAYE (no source settles it), whether it pays the NITA levy and when it's due (sources disagree). Mortgage interest and post-retirement medical fund deductions are voluntary and aren't modelled."
+      ],
+      "income_tax": {
+        "code": "PAYE",
+        "name": "PAYE",
+        "authority": "Kenya Revenue Authority",
+        "method": "per_period",
+        "bands": [
+          {
+            "up_to_minor": 2400000,
+            "rate_ppm": 100000
+          },
+          {
+            "up_to_minor": 3233300,
+            "rate_ppm": 250000
+          },
+          {
+            "up_to_minor": 50000000,
+            "rate_ppm": 300000
+          },
+          {
+            "up_to_minor": 80000000,
+            "rate_ppm": 325000
+          },
+          {
+            "up_to_minor": null,
+            "rate_ppm": 350000
+          }
+        ],
+        "due": "Day 9 of the following month",
+        "source": "ke-paye-bands",
+        "band_rounding": "total",
+        "taxable": [
+          "basic",
+          "fixed_allowance",
+          "housing",
+          "other",
+          "transport",
+          "variable"
+        ],
+        "deduction_caps": [
+          {
+            "group": "pension",
+            "cap_minor": 3000000
+          },
+          {
+            "group": "shif",
+            "cap_minor": null
+          },
+          {
+            "group": "housing_levy",
+            "cap_minor": null
+          }
+        ],
+        "reliefs": [],
+        "variable": {}
+      },
+      "lines": [
+        {
+          "code": "NSSF",
+          "name": "NSSF",
+          "kind": "employee_contribution",
+          "authority": "National Social Security Fund",
+          "base": "Gross pay",
+          "rate_ppm": 60000,
+          "amount_minor": null,
+          "base_ceiling_minor": 10800000,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": true,
+          "due": "Day 9 of the following month",
+          "source": "nssf-year-4-notice",
+          "base_floor_minor": 0,
+          "tax_deduction_group": "pension",
+          "variable": {
+            "tax_deductible": {
+              "nssf_tax_deductible": [
+                true,
+                false
+              ]
+            }
+          }
+        },
+        {
+          "code": "NSSF-ER",
+          "name": "NSSF (employer)",
+          "kind": "employer_contribution",
+          "authority": "National Social Security Fund",
+          "base": "Gross pay",
+          "rate_ppm": 60000,
+          "amount_minor": null,
+          "base_ceiling_minor": 10800000,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 9 of the following month",
+          "source": "nssf-year-4-notice",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {}
+        },
+        {
+          "code": "SHIF",
+          "name": "Social Health Insurance Fund",
+          "kind": "employee_contribution",
+          "authority": "Social Health Authority",
+          "base": "Gross pay",
+          "rate_ppm": 27500,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": 30000,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": true,
+          "due": "Day 9 of the following month",
+          "source": "shif-act-2023",
+          "base_floor_minor": 0,
+          "tax_deduction_group": "shif",
+          "variable": {}
+        },
+        {
+          "code": "HOUSING-LEVY",
+          "name": "Affordable Housing Levy",
+          "kind": "employee_contribution",
+          "authority": "Kenya Revenue Authority",
+          "base": "Gross pay",
+          "rate_ppm": 15000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": true,
+          "due": "Day 9 of the following month",
+          "source": "housing-levy-2024",
+          "base_floor_minor": 0,
+          "tax_deduction_group": "housing_levy",
+          "variable": {}
+        },
+        {
+          "code": "HOUSING-LEVY-ER",
+          "name": "Affordable Housing Levy (employer)",
+          "kind": "employer_contribution",
+          "authority": "Kenya Revenue Authority",
+          "base": "Gross pay",
+          "rate_ppm": 15000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 9 of the following month",
+          "source": "housing-levy-2024",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {}
+        },
+        {
+          "code": "NITA",
+          "name": "Industrial Training Levy (NITA)",
+          "kind": "employer_contribution",
+          "authority": "National Industrial Training Authority",
+          "base": "Gross pay",
+          "rate_ppm": null,
+          "amount_minor": 5000,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 5 of the following month",
+          "source": "nita-faq",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "present": {
+              "nita_applies": [
+                true,
+                false
+              ]
+            },
+            "due": {
+              "nita_due_day": [
+                "Day 5 of the following month",
+                "Day 10 of the following month"
+              ]
+            }
+          }
+        },
+        {
+          "code": "PERSONAL-RELIEF",
+          "name": "Off PAYE, a month",
+          "kind": "tax_credit",
+          "authority": "Kenya Revenue Authority",
+          "base": "Gross pay",
+          "rate_ppm": null,
+          "amount_minor": 240000,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 9 of the following month",
+          "source": "ke-paye-bands",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {}
+        }
+      ],
+      "settings": [
+        {
+          "key": "nssf_tax_deductible",
+          "label": "Is the employee's NSSF contribution deducted before PAYE?",
+          "help": "KRA's December 2024 notice lets pension contributions up to KES 30,000 a month come off pay before PAYE, but doesn't name NSSF. The Finance Committee chair said in June 2024 that NSSF savings would be deductible.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Yes, within the KES 30,000 a month pension cap",
+              "source": "Finance Committee chair, June 2024 debate (reported)",
+              "display": "Yes, within the KES 30,000 a month pension cap"
+            },
+            {
+              "label": "No",
+              "source": "KRA's December 2024 notice doesn't name NSSF",
+              "display": "No"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "NSSF"
+          ]
+        },
+        {
+          "key": "nita_applies",
+          "label": "Does your organisation pay the NITA industrial training levy?",
+          "help": "Sources disagree on which employers must pay: one says those with more than 20 employees, another those with 100 or more. Hotels and restaurants paying the catering levy are exempt.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Yes",
+              "source": "NITA levy FAQ",
+              "display": "Yes"
+            },
+            {
+              "label": "No",
+              "source": "Exempt, or below the threshold that applies to you",
+              "display": "No"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "NITA"
+          ]
+        },
+        {
+          "key": "nita_due_day",
+          "label": "Day of the following month the NITA levy is due",
+          "help": "Sources disagree: the 5th (Industrial Training (Amendment) Act 2022, as reported) or the 10th (older guidance) of the following month. NITA's FAQ says the last working day of the month itself; Plutus records a day of the following month.",
+          "kind": "day",
+          "options": [
+            {
+              "label": "5th",
+              "source": "Industrial Training (Amendment) Act 2022, as reported",
+              "display": "5"
+            },
+            {
+              "label": "10th",
+              "source": "Older NITA guidance",
+              "display": "10"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": {
+            "key": "nita_applies",
+            "value": "yes"
+          },
+          "affects": [
+            "NITA"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "kra-paye-notice-2024",
+          "title": "KRA, Amendments to PAYE computation pursuant to the Tax Laws (Amendment) Act, 2024 (deductions before PAYE, from December 2024 payroll)",
+          "reference": "https://www.kra.go.ke/news-center/public-notices/2157-amendments-to-paye-computation-pursuant-to-the-tax-laws-amendment-act%2C-2024",
+          "official": true
+        },
+        {
+          "id": "ke-paye-bands",
+          "title": "PAYE bands (Finance Act 2023) and personal relief, as reported for 2026 (Business Radar and other secondary sources)",
+          "reference": "https://businessradar.co.ke/?p=9779",
+          "official": false
+        },
+        {
+          "id": "nssf-year-4-notice",
+          "title": "NSSF, Notice to employers: Year 4 (2026) contribution rates, from February 2026",
+          "reference": "https://www.nssf.or.ke/notice-to-employers-year-4-2026-nssf-contribution-rates",
+          "official": true
+        },
+        {
+          "id": "shif-act-2023",
+          "title": "Social Health Insurance Act 2023 and regulations of 8 March 2024, as reported (EY)",
+          "reference": "https://www.ey.com/en_gl/technical/tax-alerts/kenya-employers-to-begin-making-contributions-to-social-health-insurance-fund",
+          "official": false
+        },
+        {
+          "id": "housing-levy-2024",
+          "title": "Affordable Housing Act 2024, as reported (Business Daily)",
+          "reference": "https://www.businessdailyafrica.com/bd/economy/workers-gain-as-kra-grants-tax-relief-on-housing-levy-shif-4863782",
+          "official": false
+        },
+        {
+          "id": "nita-faq",
+          "title": "NITA, levy FAQ (KES 50 per employee a month)",
+          "reference": "https://www.nita.go.ke/faq-s/99-nita-services",
+          "official": true
+        },
+        {
+          "id": "company-settings",
+          "title": "Entered by your organisation under Tax Settings",
+          "reference": "Plutus Tax Settings",
+          "official": false
+        }
+      ]
+    },
+    {
+      "id": "GH-2026.2",
+      "country": "GH",
+      "country_name": "Ghana",
+      "currency": "GHS",
+      "exponent": 2,
+      "effective_from": "2026-09-01",
+      "effective_to": null,
+      "tax_year_start_month": 1,
+      "frequencies": [
+        "monthly"
+      ],
+      "approval": {
+        "basis": "owner_approved",
+        "approved_by": "Plutus Technologies",
+        "approved_on": "2026-10-27",
+        "reviewed_by": null
+      },
+      "summary": [
+        "Ghana, from 1 September 2026 (Income Tax (Amendment) Act 2026, Act 1178).",
+        "Built in: the Act 1178 PAYE rates and the GHS 588 monthly threshold, PAYE due on the 15th, and social security at 5.5% employee and 13% employer on basic salary, paid out as the SSNIT Omnibus's worked example pays it: 13.5% to SSNIT (Tier 1) and 5% to the Tier 2 corporate trustee. Entered by each organisation: the monthly PAYE band limits above the threshold (GRA's monthly table wasn't found, and sources disagree where 30% starts), whether SSNIT is deductible before PAYE, the contribution ceiling (sources disagree), and the SSNIT and Tier 2 deadlines.",
+        "Periods before 1 September 2026 aren't covered: the earlier schedule wasn't captured, so they're refused."
+      ],
+      "income_tax": {
+        "code": "PAYE",
+        "name": "PAYE",
+        "authority": "Ghana Revenue Authority",
+        "method": "per_period",
+        "bands": [
+          {
+            "up_to_minor": 58800,
+            "rate_ppm": 0
+          },
+          {
+            "up_to_minor": 66800,
+            "rate_ppm": 50000
+          },
+          {
+            "up_to_minor": 76800,
+            "rate_ppm": 100000
+          },
+          {
+            "up_to_minor": 366800,
+            "rate_ppm": 175000
+          },
+          {
+            "up_to_minor": 1966800,
+            "rate_ppm": 250000
+          },
+          {
+            "up_to_minor": 5000000,
+            "rate_ppm": 300000
+          },
+          {
+            "up_to_minor": null,
+            "rate_ppm": 350000
+          }
+        ],
+        "due": "Day 15 of the following month",
+        "source": "gh-paye-bands",
+        "band_rounding": "total",
+        "taxable": [
+          "basic",
+          "fixed_allowance",
+          "housing",
+          "other",
+          "transport",
+          "variable"
+        ],
+        "deduction_caps": [
+          {
+            "group": "ssnit",
+            "cap_minor": null
+          }
+        ],
+        "reliefs": [],
+        "variable": {
+          "band.1.up_to_minor": {
+            "paye_5_band_limit": [
+              66800
+            ]
+          },
+          "band.2.up_to_minor": {
+            "paye_10_band_limit": [
+              76800
+            ]
+          },
+          "band.3.up_to_minor": {
+            "paye_17_5_band_limit": [
+              366800
+            ]
+          },
+          "band.4.up_to_minor": {
+            "paye_25_band_limit": [
+              1966800,
+              3400000
+            ]
+          },
+          "band.5.up_to_minor": {
+            "paye_30_band_limit": [
+              5000000
+            ]
+          }
+        }
+      },
+      "lines": [
+        {
+          "code": "SSNIT",
+          "name": "Social security (SSNIT)",
+          "kind": "employee_contribution",
+          "authority": "Social Security and National Insurance Trust",
+          "base": "Basic salary",
+          "rate_ppm": 55000,
+          "amount_minor": null,
+          "base_ceiling_minor": 6900000,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": true,
+          "due": "Day 15 of the following month",
+          "source": "gh-ssnit-rates",
+          "base_floor_minor": 0,
+          "tax_deduction_group": "ssnit",
+          "variable": {
+            "tax_deductible": {
+              "ssnit_tax_deductible": [
+                true,
+                false
+              ]
+            },
+            "base_ceiling_minor": {
+              "ssnit_monthly_ceiling": [
+                6900000,
+                508333
+              ]
+            },
+            "due": {
+              "ssnit_due_day": [
+                "Day 15 of the following month",
+                "Day 14 of the following month"
+              ]
+            }
+          }
+        },
+        {
+          "code": "SSNIT-ER",
+          "name": "Social security, Tier 1 (employer)",
+          "kind": "employer_contribution",
+          "authority": "Social Security and National Insurance Trust",
+          "base": "Basic salary",
+          "rate_ppm": 80000,
+          "amount_minor": null,
+          "base_ceiling_minor": 6900000,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 15 of the following month",
+          "source": "ssnit-omnibus",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base_ceiling_minor": {
+              "ssnit_monthly_ceiling": [
+                6900000,
+                508333
+              ]
+            },
+            "due": {
+              "ssnit_due_day": [
+                "Day 15 of the following month",
+                "Day 14 of the following month"
+              ]
+            }
+          }
+        },
+        {
+          "code": "TIER2-ER",
+          "name": "Occupational pension, Tier 2 (employer)",
+          "kind": "employer_contribution",
+          "authority": "Tier 2 corporate trustee",
+          "base": "Basic salary",
+          "rate_ppm": 50000,
+          "amount_minor": null,
+          "base_ceiling_minor": 6900000,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "ssnit-omnibus",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base_ceiling_minor": {
+              "ssnit_monthly_ceiling": [
+                6900000,
+                508333
+              ]
+            },
+            "due": {
+              "tier2_due_day": null
+            }
+          }
+        }
+      ],
+      "settings": [
+        {
+          "key": "paye_5_band_limit",
+          "label": "Monthly PAYE: upper limit of the 5% band",
+          "help": "Act 1178's 5% band ends at GHS 8,016 a year, as reported; GRA's monthly table wasn't found, and dividing by 12 isn't a substitute for it. Enter the monthly limit from GRA's table.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GHS 8,016 ÷ 12",
+              "source": "Act 1178 annual band, divided by 12",
+              "display": "668.00 GHS"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "income tax"
+          ]
+        },
+        {
+          "key": "paye_10_band_limit",
+          "label": "Monthly PAYE: upper limit of the 10% band",
+          "help": "Act 1178's 10% band ends at GHS 9,216 a year, as reported; GRA's monthly table wasn't found, and dividing by 12 isn't a substitute for it. Enter the monthly limit from GRA's table.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GHS 9,216 ÷ 12",
+              "source": "Act 1178 annual band, divided by 12",
+              "display": "768.00 GHS"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "income tax"
+          ]
+        },
+        {
+          "key": "paye_17_5_band_limit",
+          "label": "Monthly PAYE: upper limit of the 17.5% band",
+          "help": "Act 1178's 17.5% band ends at GHS 44,016 a year, as reported; GRA's monthly table wasn't found, and dividing by 12 isn't a substitute for it. Enter the monthly limit from GRA's table.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GHS 44,016 ÷ 12",
+              "source": "Act 1178 annual band, divided by 12",
+              "display": "3,668.00 GHS"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "income tax"
+          ]
+        },
+        {
+          "key": "paye_25_band_limit",
+          "label": "Monthly PAYE: upper limit of the 25% band",
+          "help": "Sources disagree where 30% starts: most go straight from 25% to 30% at GHS 236,016 a year; Regfollower reproduces a GRA-style table with 30% from GHS 408,000. GRA's monthly table wasn't found. Enter the monthly limit from GRA's table.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GHS 236,016 ÷ 12",
+              "source": "Most sources: Mercans, GhanaWeb",
+              "display": "19,668.00 GHS"
+            },
+            {
+              "label": "GHS 408,000 ÷ 12",
+              "source": "Regfollower",
+              "display": "34,000.00 GHS"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "income tax"
+          ]
+        },
+        {
+          "key": "paye_30_band_limit",
+          "label": "Monthly PAYE: upper limit of the 30% band",
+          "help": "Act 1178's 30% band ends at GHS 600,000 a year, as reported; GRA's monthly table wasn't found, and dividing by 12 isn't a substitute for it. Enter the monthly limit from GRA's table.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GHS 600,000 ÷ 12",
+              "source": "Act 1178 annual band, divided by 12",
+              "display": "50,000.00 GHS"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "income tax"
+          ]
+        },
+        {
+          "key": "ssnit_tax_deductible",
+          "label": "Is the employee's 5.5% SSNIT contribution deducted before PAYE?",
+          "help": "No source found says whether the employee's social security contribution comes off pay before PAYE.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Yes",
+              "source": "Your organisation's practice",
+              "display": "Yes"
+            },
+            {
+              "label": "No",
+              "source": "Your organisation's practice",
+              "display": "No"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "SSNIT"
+          ]
+        },
+        {
+          "key": "ssnit_monthly_ceiling",
+          "label": "Monthly ceiling on basic salary for social security",
+          "help": "Sources disagree: GHS 69,000 a month in one, GHS 61,000 a year in another.",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "GHS 69,000 a month",
+              "source": "Secondary source",
+              "display": "69,000.00 GHS"
+            },
+            {
+              "label": "GHS 61,000 a year ÷ 12",
+              "source": "Secondary source",
+              "display": "5,083.33 GHS"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "SSNIT",
+            "SSNIT-ER",
+            "TIER2-ER"
+          ]
+        },
+        {
+          "key": "ssnit_due_day",
+          "label": "Day of the following month SSNIT (Tier 1) is due",
+          "help": "Most sources say the 15th; one payroll vendor says the 14th (unverified).",
+          "kind": "day",
+          "options": [
+            {
+              "label": "15th",
+              "source": "Several secondary sources",
+              "display": "15"
+            },
+            {
+              "label": "14th",
+              "source": "One payroll vendor (unverified)",
+              "display": "14"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "SSNIT",
+            "SSNIT-ER"
+          ]
+        },
+        {
+          "key": "tier2_due_day",
+          "label": "Day of the following month the Tier 2 contribution is due",
+          "help": "No source found gives the deadline for paying the Tier 2 corporate trustee.",
+          "kind": "day",
+          "options": [],
+          "minimum": "1",
+          "maximum": "28",
+          "required_when": null,
+          "affects": [
+            "TIER2-ER"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "gra-act-1178",
+          "title": "GRA, Amendments: Income Tax (Amendment) Act, 2026 (Act 1178), new rates from 1 September 2026; first GHS 7,056 a year at 0%",
+          "reference": "https://gra.gov.gh/news/portfolio/amendments-income-tax-act-2026-act-1178/",
+          "official": true
+        },
+        {
+          "id": "gh-paye-bands",
+          "title": "Act 1178 annual bands and the GHS 588 monthly threshold, as reported (Mercans, Regfollower, GhanaWeb, TaxLawGH)",
+          "reference": "https://mercans.com/resources/statutory-alerts/ghana-revised-personal-income-tax-paye-rates-1st-september-2026/",
+          "official": false
+        },
+        {
+          "id": "ssnit-omnibus",
+          "title": "SSNIT, Omnibus: worked example paying 13.5% of basic salary to SSNIT (Tier 1) and 5% to the Tier 2 trustee",
+          "reference": "https://www.ssnit.org.gh/wp-content/uploads/2023/08/SSNIT-Omnibus.pdf",
+          "official": true
+        },
+        {
+          "id": "gh-ssnit-rates",
+          "title": "National Pensions Act 2008 (Act 766) rates: 5.5% employee and 13% employer of basic salary, as reported (several secondary sources)",
+          "reference": "https://www.taxlawgh.com/ghana-tax-rates",
+          "official": false
+        },
+        {
+          "id": "company-settings",
+          "title": "Entered by your organisation under Tax Settings",
+          "reference": "Plutus Tax Settings",
+          "official": false
+        }
+      ]
+    },
+    {
+      "id": "CI-2026.1",
+      "country": "CI",
+      "country_name": "Côte d'Ivoire",
+      "currency": "XOF",
+      "exponent": 0,
+      "effective_from": "2026-01-01",
+      "effective_to": null,
+      "tax_year_start_month": 1,
+      "frequencies": [
+        "monthly"
+      ],
+      "approval": {
+        "basis": "owner_approved",
+        "approved_by": "Plutus Technologies",
+        "approved_on": "2026-10-27",
+        "reviewed_by": null
+      },
+      "summary": [
+        "Côte d'Ivoire, for 2026.",
+        "Built in: the six-band ITS schedule (Ordonnance No. 2023-719, from 2024), its family reduction (RICF: XOF 5,500 a month for each half-share above one share, counting up to five shares), CNPS retirement at 6.3% employee and 7.7% employer, maternity at 0.75% from the employer, and universal health cover (CMU) at XOF 1,000 a month. Entered by each organisation, where no source settles them or sources disagree: what CNPS contributions are charged on, the retirement ceiling, the family benefits rate, the ceiling on family benefits, maternity and work accidents, the employer's work accident rate, the employee's share of CMU, the training levy rates, the employer tax on salaries, and every deadline.",
+        "ITS needs each employee's family shares, and the employer tax on salaries whether each is an expatriate: payroll refuses an employee without them. CMU is charged for the employee only; dependants' cover isn't included."
+      ],
+      "income_tax": {
+        "code": "ITS",
+        "name": "Impôt sur les traitements et salaires (ITS)",
+        "authority": "Direction Générale des Impôts",
+        "method": "per_period",
+        "bands": [
+          {
+            "up_to_minor": 75000,
+            "rate_ppm": 0
+          },
+          {
+            "up_to_minor": 240000,
+            "rate_ppm": 160000
+          },
+          {
+            "up_to_minor": 800000,
+            "rate_ppm": 210000
+          },
+          {
+            "up_to_minor": 2400000,
+            "rate_ppm": 240000
+          },
+          {
+            "up_to_minor": 8000000,
+            "rate_ppm": 280000
+          },
+          {
+            "up_to_minor": null,
+            "rate_ppm": 320000
+          }
+        ],
+        "due": "Day 1 of the following month",
+        "source": "ci-its",
+        "band_rounding": "total",
+        "taxable": [
+          "basic",
+          "fixed_allowance",
+          "housing",
+          "other",
+          "transport",
+          "variable"
+        ],
+        "deduction_caps": [],
+        "reliefs": [],
+        "variable": {
+          "due": {
+            "its_due_day": null
+          }
+        }
+      },
+      "lines": [
+        {
+          "code": "CNPS-RETIREMENT",
+          "name": "CNPS retirement",
+          "kind": "employee_contribution",
+          "authority": "Caisse Nationale de Prévoyance Sociale",
+          "base": "Gross pay",
+          "rate_ppm": 63000,
+          "amount_minor": null,
+          "base_ceiling_minor": 3375000,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "ci-cnps",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base": {
+              "cnps_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            },
+            "base_ceiling_minor": {
+              "cnps_retirement_ceiling": [
+                3375000,
+                1647315
+              ]
+            },
+            "due": {
+              "cnps_due_day": null
+            }
+          }
+        },
+        {
+          "code": "CNPS-RETIREMENT-ER",
+          "name": "CNPS retirement (employer)",
+          "kind": "employer_contribution",
+          "authority": "Caisse Nationale de Prévoyance Sociale",
+          "base": "Gross pay",
+          "rate_ppm": 77000,
+          "amount_minor": null,
+          "base_ceiling_minor": 3375000,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "ci-cnps",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base": {
+              "cnps_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            },
+            "base_ceiling_minor": {
+              "cnps_retirement_ceiling": [
+                3375000,
+                1647315
+              ]
+            },
+            "due": {
+              "cnps_due_day": null
+            }
+          }
+        },
+        {
+          "code": "CNPS-FAMILY-ER",
+          "name": "CNPS family benefits (employer)",
+          "kind": "employer_contribution",
+          "authority": "Caisse Nationale de Prévoyance Sociale",
+          "base": "Gross pay",
+          "rate_ppm": 50000,
+          "amount_minor": null,
+          "base_ceiling_minor": 1,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base": {
+              "cnps_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            },
+            "rate_ppm": {
+              "family_benefits_rate": [
+                50000,
+                57500
+              ]
+            },
+            "base_ceiling_minor": {
+              "cnps_other_ceiling": null
+            },
+            "due": {
+              "cnps_due_day": null
+            }
+          }
+        },
+        {
+          "code": "CNPS-MATERNITY-ER",
+          "name": "CNPS maternity (employer)",
+          "kind": "employer_contribution",
+          "authority": "Caisse Nationale de Prévoyance Sociale",
+          "base": "Gross pay",
+          "rate_ppm": 7500,
+          "amount_minor": null,
+          "base_ceiling_minor": 1,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "ci-cnps",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base": {
+              "cnps_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            },
+            "base_ceiling_minor": {
+              "cnps_other_ceiling": null
+            },
+            "due": {
+              "cnps_due_day": null
+            }
+          }
+        },
+        {
+          "code": "CNPS-ACCIDENT-ER",
+          "name": "CNPS work accidents (employer)",
+          "kind": "employer_contribution",
+          "authority": "Caisse Nationale de Prévoyance Sociale",
+          "base": "Gross pay",
+          "rate_ppm": 0,
+          "amount_minor": null,
+          "base_ceiling_minor": 1,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base": {
+              "cnps_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            },
+            "base_ceiling_minor": {
+              "cnps_other_ceiling": null
+            },
+            "rate_ppm": {
+              "work_accident_rate": null
+            },
+            "due": {
+              "cnps_due_day": null
+            }
+          }
+        },
+        {
+          "code": "CMU-ER",
+          "name": "Universal health cover (CMU, employer)",
+          "kind": "employer_contribution",
+          "authority": "Caisse Nationale de Prévoyance Sociale",
+          "base": "Gross pay",
+          "rate_ppm": null,
+          "amount_minor": 1000,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "base": {
+              "cnps_base": [
+                "Gross pay",
+                "Basic salary plus fixed allowances",
+                "Basic salary"
+              ]
+            },
+            "present": {
+              "cmu_employee_amount": null
+            },
+            "amount_minor": {
+              "cmu_employee_amount": null
+            },
+            "due": {
+              "cnps_due_day": null
+            }
+          }
+        },
+        {
+          "code": "SALARY-TAX-LOCAL-ER",
+          "name": "Employer tax on salaries (local staff)",
+          "kind": "employer_contribution",
+          "authority": "Direction Générale des Impôts",
+          "base": "Gross pay",
+          "rate_ppm": 28000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "local_staff",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "rate_ppm": {
+              "employer_salary_tax": [
+                28000,
+                12000
+              ]
+            },
+            "due": {
+              "employer_taxes_due_day": null
+            }
+          }
+        },
+        {
+          "code": "SALARY-TAX-EXPAT-ER",
+          "name": "Employer tax on salaries (expatriates)",
+          "kind": "employer_contribution",
+          "authority": "Direction Générale des Impôts",
+          "base": "Gross pay",
+          "rate_ppm": 120000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "expatriates",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "rate_ppm": {
+              "employer_salary_tax": [
+                120000,
+                104000
+              ]
+            },
+            "due": {
+              "employer_taxes_due_day": null
+            }
+          }
+        },
+        {
+          "code": "FDFP-APPRENTICESHIP",
+          "name": "Apprenticeship tax (FDFP)",
+          "kind": "payroll_levy",
+          "authority": "Fonds de Développement de la Formation Professionnelle",
+          "base": "Gross pay",
+          "rate_ppm": 4000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "rate_ppm": {
+              "apprenticeship_tax_rate": [
+                4000,
+                5000
+              ]
+            },
+            "due": {
+              "employer_taxes_due_day": null
+            }
+          }
+        },
+        {
+          "code": "FDFP-TRAINING",
+          "name": "Continuing-training tax (FDFP)",
+          "kind": "payroll_levy",
+          "authority": "Fonds de Développement de la Formation Professionnelle",
+          "base": "Gross pay",
+          "rate_ppm": 12000,
+          "amount_minor": null,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "rate_ppm": {
+              "continuing_training_rate": [
+                12000,
+                15000
+              ]
+            },
+            "due": {
+              "employer_taxes_due_day": null
+            }
+          }
+        },
+        {
+          "code": "RICF",
+          "name": "Off Impôt sur les traitements et salaires (ITS), per half-share",
+          "kind": "tax_credit",
+          "authority": "Direction Générale des Impôts",
+          "base": "Gross pay",
+          "rate_ppm": null,
+          "amount_minor": 5500,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "ci-its",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "due": {
+              "its_due_day": null
+            }
+          }
+        },
+        {
+          "code": "CMU",
+          "name": "Universal health cover (CMU)",
+          "kind": "employee_contribution",
+          "authority": "Caisse Nationale de Prévoyance Sociale",
+          "base": "Gross pay",
+          "rate_ppm": null,
+          "amount_minor": 1,
+          "base_ceiling_minor": null,
+          "amount_floor_minor": null,
+          "amount_cap_minor": null,
+          "applies_to": "all",
+          "tax_deductible": false,
+          "due": "Day 1 of the following month",
+          "source": "company-settings",
+          "base_floor_minor": 0,
+          "tax_deduction_group": null,
+          "variable": {
+            "amount_minor": {
+              "cmu_employee_amount": null
+            },
+            "present": {
+              "cmu_employee_amount": null
+            }
+          }
+        }
+      ],
+      "settings": [
+        {
+          "key": "cnps_base",
+          "label": "What CNPS contributions are charged on",
+          "help": "No source found states the pay CNPS contributions are charged on. The ITS is charged on gross pay.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "Gross pay",
+              "source": "Your organisation's practice",
+              "display": "Gross pay"
+            },
+            {
+              "label": "Basic salary plus fixed allowances",
+              "source": "Your organisation's practice",
+              "display": "Basic salary plus fixed allowances"
+            },
+            {
+              "label": "Basic salary",
+              "source": "Your organisation's practice",
+              "display": "Basic salary"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "CMU-ER",
+            "CNPS-ACCIDENT-ER",
+            "CNPS-FAMILY-ER",
+            "CNPS-MATERNITY-ER",
+            "CNPS-RETIREMENT",
+            "CNPS-RETIREMENT-ER"
+          ]
+        },
+        {
+          "key": "cnps_retirement_ceiling",
+          "label": "Monthly ceiling for CNPS retirement contributions",
+          "help": "Sources disagree: XOF 3,375,000 a month (CLEISS, rates at 1 January 2025) or XOF 1,647,315 a month (a 2026 source).",
+          "kind": "amount",
+          "options": [
+            {
+              "label": "XOF 3,375,000",
+              "source": "CLEISS, rates at 1 January 2025",
+              "display": "3,375,000 XOF"
+            },
+            {
+              "label": "XOF 1,647,315",
+              "source": "A 2026 source",
+              "display": "1,647,315 XOF"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "CNPS-RETIREMENT",
+            "CNPS-RETIREMENT-ER"
+          ]
+        },
+        {
+          "key": "family_benefits_rate",
+          "label": "Employer's CNPS family benefits rate",
+          "help": "Sources disagree: 5% (CLEISS 2025) or 5.75% (a 2026 source). 5.75% may be 5% plus the 0.75% maternity rate reported together; maternity is charged separately here, so choose 5% if that's the case.",
+          "kind": "percent",
+          "options": [
+            {
+              "label": "5%",
+              "source": "CLEISS, rates at 1 January 2025",
+              "display": "5%"
+            },
+            {
+              "label": "5.75%",
+              "source": "A 2026 source",
+              "display": "5.75%"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "CNPS-FAMILY-ER"
+          ]
+        },
+        {
+          "key": "cnps_other_ceiling",
+          "label": "Monthly ceiling for family benefits, maternity and work accidents",
+          "help": "No source found gives the ceiling for these CNPS branches. Enter the monthly ceiling CNPS applies to your organisation.",
+          "kind": "amount",
+          "options": [],
+          "minimum": "1 XOF",
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "CNPS-ACCIDENT-ER",
+            "CNPS-FAMILY-ER",
+            "CNPS-MATERNITY-ER"
+          ]
+        },
+        {
+          "key": "work_accident_rate",
+          "label": "Employer's CNPS work accident rate",
+          "help": "2% to 5% depending on the organisation's risk class, and revised for its claims record. Enter the rate CNPS has notified you of.",
+          "kind": "percent",
+          "options": [],
+          "minimum": "0%",
+          "maximum": "100%",
+          "required_when": null,
+          "affects": [
+            "CNPS-ACCIDENT-ER"
+          ]
+        },
+        {
+          "key": "cmu_employee_amount",
+          "label": "Employee's share of the XOF 1,000 monthly CMU contribution",
+          "help": "CMU is XOF 1,000 a person a month (CLEISS); how it splits between employer and employee wasn't found. The employer pays the rest. Dependants' cover isn't included.",
+          "kind": "amount",
+          "options": [],
+          "minimum": "0 XOF",
+          "maximum": "1,000 XOF",
+          "required_when": null,
+          "affects": [
+            "CMU",
+            "CMU-ER"
+          ]
+        },
+        {
+          "key": "apprenticeship_tax_rate",
+          "label": "Apprenticeship tax (FDFP) rate",
+          "help": "Sources disagree: 0.4% of gross pay (Africarrières, Deel) or 0.5% (Rivermate, French edition).",
+          "kind": "percent",
+          "options": [
+            {
+              "label": "0.4%",
+              "source": "Africarrières; Deel",
+              "display": "0.4%"
+            },
+            {
+              "label": "0.5%",
+              "source": "Rivermate (French edition)",
+              "display": "0.5%"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "FDFP-APPRENTICESHIP"
+          ]
+        },
+        {
+          "key": "continuing_training_rate",
+          "label": "Continuing-training tax (FDFP) rate",
+          "help": "Sources disagree: 1.2% of gross pay in all (0.6% plus 0.6%; Africarrières, Deel) or 1.5% (Rivermate, French edition).",
+          "kind": "percent",
+          "options": [
+            {
+              "label": "1.2%",
+              "source": "Africarrières; Deel",
+              "display": "1.2%"
+            },
+            {
+              "label": "1.5%",
+              "source": "Rivermate (French edition)",
+              "display": "1.5%"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "FDFP-TRAINING"
+          ]
+        },
+        {
+          "key": "employer_salary_tax",
+          "label": "Employer tax on salaries",
+          "help": "Sources disagree on the rates for local staff and expatriates. Each employee's record must say whether they're an expatriate.",
+          "kind": "choice",
+          "options": [
+            {
+              "label": "2.8% for local staff, 12% for expatriates",
+              "source": "Rivermate (English edition, July 2025)",
+              "display": "2.8% for local staff, 12% for expatriates"
+            },
+            {
+              "label": "1.2% for local staff, 10.4% for expatriates",
+              "source": "Rivermate (French edition)",
+              "display": "1.2% for local staff, 10.4% for expatriates"
+            }
+          ],
+          "minimum": null,
+          "maximum": null,
+          "required_when": null,
+          "affects": [
+            "SALARY-TAX-EXPAT-ER",
+            "SALARY-TAX-LOCAL-ER"
+          ]
+        },
+        {
+          "key": "its_due_day",
+          "label": "Day of the following month ITS is due",
+          "help": "No source found gives the deadline for ITS.",
+          "kind": "day",
+          "options": [],
+          "minimum": "1",
+          "maximum": "28",
+          "required_when": null,
+          "affects": [
+            "RICF",
+            "income tax"
+          ]
+        },
+        {
+          "key": "cnps_due_day",
+          "label": "Day of the following month CNPS contributions are due",
+          "help": "No source found gives the deadline for CNPS contributions.",
+          "kind": "day",
+          "options": [],
+          "minimum": "1",
+          "maximum": "28",
+          "required_when": null,
+          "affects": [
+            "CMU-ER",
+            "CNPS-ACCIDENT-ER",
+            "CNPS-FAMILY-ER",
+            "CNPS-MATERNITY-ER",
+            "CNPS-RETIREMENT",
+            "CNPS-RETIREMENT-ER"
+          ]
+        },
+        {
+          "key": "employer_taxes_due_day",
+          "label": "Day of the following month the training levies and employer tax on salaries are due",
+          "help": "No source found gives the deadline for the training levies and employer tax on salaries.",
+          "kind": "day",
+          "options": [],
+          "minimum": "1",
+          "maximum": "28",
+          "required_when": null,
+          "affects": [
+            "FDFP-APPRENTICESHIP",
+            "FDFP-TRAINING",
+            "SALARY-TAX-EXPAT-ER",
+            "SALARY-TAX-LOCAL-ER"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "ci-its",
+          "title": "ITS schedule (CGI article 119 bis) and family reduction (article 120) after Ordonnance No. 2023-719, as reported for 2026 (AfricaPaieRH, Kabomal)",
+          "reference": "https://africapaierh.com/blog/calcul-its-cote-divoire-2026/",
+          "official": false
+        },
+        {
+          "id": "ci-cnps",
+          "title": "CLEISS, Les cotisations en Côte d'Ivoire: retirement 6.3% employee and 7.7% employer, maternity 0.75%, CMU XOF 1,000 a person a month (rates at 1 January 2025)",
+          "reference": "https://www.cleiss.fr/docs/cotisations/cotedivoire.html",
+          "official": false
+        },
+        {
+          "id": "company-settings",
+          "title": "Entered by your organisation under Tax Settings",
+          "reference": "Plutus Tax Settings",
+          "official": false
+        }
+      ]
+    }
+  ]
+}

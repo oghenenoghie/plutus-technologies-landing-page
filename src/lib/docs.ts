@@ -51,6 +51,8 @@ export interface DocSection {
   points?: string[];
   note?: string;
   shots?: DocShot[];
+  /** A country code: the section shows that country's payroll rules, from src/data/country-rules.json. */
+  rules?: string;
 }
 
 export interface DocGuide {
@@ -433,7 +435,7 @@ export const DOC_GUIDES: DocGuide[] = [
           "**History** keeps every figure ever entered and who entered it. Nothing is overwritten: a new value takes over from its date, and it can't take effect on or before the end of a locked pay run.",
           "When a new rule set is due, such as Rwanda's from 1 January 2027, the figures it adds appear under its start date, so you can enter them before the first pay run that needs them.",
         ],
-        note: "Only a Super Admin can enter figures. Payroll Managers, Accountants and Auditors can read the page.",
+        note: "Only a Super Admin can enter figures. Payroll Managers, Accountants and Auditors can read the page. Every country's rules and Tax Settings are listed in the Country tax rules guide.",
         shots: [
           shot(
             "tax-settings",
@@ -551,6 +553,48 @@ export const DOC_GUIDES: DocGuide[] = [
         note: "Nigeria runs on its own rule versions. The other five run on rule sets Plutus Technologies approved from published sources, without a local tax adviser's review, with the open figures entered under Tax Settings. Their VAT and withholding tax aren't approved yet, so Plutus doesn't calculate them.",
         shots: [shot("countries", "The Country Compliance catalogue", "All six countries are active for payroll.")],
       },
+    ],
+  },
+  {
+    slug: "tax-rules",
+    title: "Country tax rules",
+    summary: "Each country's payroll tax configuration: income tax bands, contributions and levies, Tax Settings and sources.",
+    description:
+      "The payroll rules Plutus applies in Nigeria, Ghana, Kenya, Rwanda, The Gambia and Côte d'Ivoire: income tax bands, every contribution and levy, the figures each company enters under Tax Settings, and the sources.",
+    sections: [
+      {
+        id: "read-this-first",
+        title: "How to read these tables",
+        intro:
+          "Each country's payroll rules exactly as Plutus holds them, taken from the app's own rule sets, not retyped. Nigeria runs on its own rule version. Ghana, Kenya, Rwanda, The Gambia and Côte d'Ivoire run on rule sets Plutus Technologies approved on 27 October 2026 from published sources, before review by a local tax adviser.",
+        points: [
+          "**†** marks a figure your company sets under **Tax Settings**. Where the sources offer figures, they are shown; otherwise your company enters its own.",
+          "Outside Nigeria, income tax is worked out on each month's pay on its own, against monthly bands. Nigeria's PAYE is worked out cumulatively over the tax year, against annual bands.",
+          "Each line cites a numbered source, marked **Official** (the law or the authority's own publication) or **Secondary** (such as an accounting firm, law firm or payroll vendor).",
+          "VAT, withholding tax and corporate tax for the five newer countries aren't approved yet, so Plutus doesn't calculate them and they aren't listed here.",
+        ],
+        note: "These are the rules Plutus applies, not tax advice. Check them with a tax adviser in the country before you rely on them.",
+        shots: [
+          shot(
+            "tax-settings-rules",
+            "The rules as they stand today, on the Tax Settings screen",
+            "In the app, Tax Settings shows the same rules, with your company's figures filled in.",
+          ),
+        ],
+      },
+      { id: "nigeria", title: "Nigeria", where: ["Accounts", "Payroll", "Compliance Engine"], rules: "NG" },
+      { id: "ghana", title: "Ghana", where: ["Accounts", "Payroll", "Tax Settings"], rules: "GH" },
+      { id: "kenya", title: "Kenya", where: ["Accounts", "Payroll", "Tax Settings"], rules: "KE" },
+      {
+        id: "rwanda",
+        title: "Rwanda",
+        where: ["Accounts", "Payroll", "Tax Settings"],
+        intro:
+          "Two rule sets: one for 2026, and one from 1 January 2027, when the RSSB pension rises to 14% in all and your company enters the employee's share. The 2026 settings carry over.",
+        rules: "RW",
+      },
+      { id: "the-gambia", title: "The Gambia", where: ["Accounts", "Payroll", "Tax Settings"], rules: "GM" },
+      { id: "cote-divoire", title: "Côte d'Ivoire", where: ["Accounts", "Payroll", "Tax Settings"], rules: "CI" },
     ],
   },
   {
