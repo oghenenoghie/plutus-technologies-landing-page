@@ -29,9 +29,9 @@ export function Hero() {
             <ButtonLink variant="line" href={LINKS.cloud}>
               {CLOUD_CTA}
             </ButtonLink>
-            <ButtonLink variant="line" href={LINKS.download}>
+            <ButtonLink variant="line" href={LINKS.download} disabled>
               <Icon name="down" />
-              Download Desktop
+              Desktop downloads unavailable
             </ButtonLink>
           </div>
           <ul className="rise flex flex-wrap gap-x-[22px] gap-y-2 border-t border-line pt-[22px] text-[13px] text-ink-soft [animation-delay:.24s]">
