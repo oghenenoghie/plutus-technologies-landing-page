@@ -21,7 +21,7 @@ export const CLOUD_CTA = CLOUD_APP_URL ? "Open Plutus Cloud" : "Request Cloud ac
  * On since desktop_plutus_hr-frontend published its first release (desktop-v0.1.0-build.18) with the
  * installers below. Set to false to grey out the Windows/macOS/Linux buttons if the release is pulled.
  */
-export const DESKTOP_DOWNLOADS_ENABLED = true;
+export const DESKTOP_DOWNLOADS_ENABLED = false;
 
 export const LINKS = {
   cloud: CLOUD_APP_URL ?? "/contact",
