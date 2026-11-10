@@ -748,7 +748,7 @@ export const DOC_GUIDES: DocGuide[] = [
           "To update, download the new installer and run it. It installs over the previous version and keeps your data.",
           "On Windows, the installer stops a running Plutus before replacing it.",
           "Since build 42 (October 2026), Desktop has Analytics & Insights, Country Compliance and the choice of country at sign-up. If you installed an earlier build, update to get them.",
-          "The current release, build 43, runs payroll for Nigeria only. Tax Settings, and payroll in Ghana, Kenya, Rwanda, The Gambia and Côte d'Ivoire, are in Plutus Cloud and not yet in Desktop.",
+          "Since build 54 (November 2026), Desktop has Tax Settings and runs payroll in all six countries: Nigeria, Ghana, Kenya, Rwanda, The Gambia and Côte d'Ivoire. If you installed an earlier build, update to get them.",
         ],
       },
     ],
