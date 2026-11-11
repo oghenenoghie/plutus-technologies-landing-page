@@ -98,8 +98,7 @@ export default function DocsPage() {
             </li>
             <li>
               <span>
-                Plutus Desktop has the same screens, except Tax Settings: its current release (build 43) runs payroll for
-                Nigeria only.
+                Plutus Desktop has the same screens, Tax Settings included, and runs payroll in all six countries.
               </span>
             </li>
             <li>

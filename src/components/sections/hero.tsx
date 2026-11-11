@@ -1,6 +1,6 @@
 import { Icon } from "@/components/icons";
 import { ArrowIcon, ButtonLink } from "@/components/ui/button";
-import { CLOUD_CTA, LINKS } from "@/lib/site";
+import { CLOUD_CTA, DESKTOP_DOWNLOADS_ENABLED, LINKS } from "@/lib/site";
 import { InvoiceInstrument } from "./invoice-instrument";
 
 const CHECKS = ["Debits equal credits on every post", "VAT and WHT on every invoice and bill", "TIN checked on customers and vendors"];
@@ -29,9 +29,9 @@ export function Hero() {
             <ButtonLink variant="line" href={LINKS.cloud}>
               {CLOUD_CTA}
             </ButtonLink>
-            <ButtonLink variant="line" href={LINKS.download} disabled>
+            <ButtonLink variant="line" href={LINKS.download} disabled={!DESKTOP_DOWNLOADS_ENABLED}>
               <Icon name="down" />
-              Desktop downloads unavailable
+              {DESKTOP_DOWNLOADS_ENABLED ? "Download Desktop" : "Desktop downloads unavailable"}
             </ButtonLink>
           </div>
           <ul className="rise flex flex-wrap gap-x-[22px] gap-y-2 border-t border-line pt-[22px] text-[13px] text-ink-soft [animation-delay:.24s]">
