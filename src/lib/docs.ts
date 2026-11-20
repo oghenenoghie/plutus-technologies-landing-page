@@ -551,10 +551,11 @@ export const DOC_GUIDES: DocGuide[] = [
         where: ["Accounts", "Payroll", "Payroll Runs"],
         roles: BOOKS,
         steps: [
-          "Choose **Review & Post** on a draft run. Every payslip shows before anything is posted.",
-          "Choose **Validate**. If pay changed a lot since the last posted run, or someone was left out, Plutus lists them; check them and choose **Validate Anyway**.",
-          "Choose **Post to Records**. The payroll cost goes to the profit and loss account, the payslips are stored, and each employee with an email address is sent theirs.",
-          "Choose **Print** for the payroll register, and **Mark as Paid** once net pay has gone out.",
+          "Choose **Review & Post** on a draft run. The payslip preview shows the figures each employee would receive; previewing does not save payslips or post anything to the ledger.",
+          "Check the readiness panel before validating. A missing TIN is a blocker and must be fixed on the employee record; a missing email means the payslip cannot be emailed, and a missing or unverified bank account leaves that employee out of the payment file. Email and bank-account issues are warnings, not validation blockers.",
+          "Choose **Validate**. Plutus checks TINs and compares each employee with the previous posted run of the same frequency. It flags gross pay changes of 30% or more and employees who were active and paid in that previous run but are missing now. Review the flags, then choose **Validate Anyway** only to acknowledge and accept them.",
+          "Choose **Post to Records**. This is the point where payslips are saved and payroll and employer costs are posted to the general ledger. Plutus then attempts to email payslips in the background; check each payslip's delivery status and use **Resend Payslip** if needed.",
+          "Choose **Print** for the payroll register, and **Mark as Paid** only after net pay has gone out. This records payment in Plutus; it does not transfer money to employees.",
         ],
       },
       {
