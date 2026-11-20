@@ -706,7 +706,7 @@ export const DOC_GUIDES: DocGuide[] = [
         roles: BOOKS,
         steps: [
           "Choose **View** on an employee to open their record. Its tabs are Overview, History, Checklist, Probation and Documents.",
-          "Choose **Create Login** to give them self-service access. They can sign in with their email or the login code on their record.",
+          "A **Super Admin** can choose **Create Login** to give them self-service access. Employees can sign in with their email or the login code on their record.",
           "Use **Edit Details** for changes and **Offboard** when they leave.",
         ],
         points: [
