@@ -1,10 +1,10 @@
 /**
  * The product documentation at /docs: one guide per area of the app, each a list of sections.
  *
- * Every step, label and menu path was checked against plutus-hr-system-frontend and plutus-hr-system
- * (31 October 2026). Screenshots are in public/docs/screens. They were taken from a local build of the
- * Cloud app, with fictional organisations ("Sample Trading Ltd" in Nigeria, "Sample Trading Kenya Ltd"
- * for Tax Settings and engine payslips) and sample figures, at 1440×900.
+ * Guide text last rechecked against plutus-hr-system-frontend main at c398a577eafbdfcee079f0db6e3cc32f199d218c
+ * (20 November 2026). Screenshots are in public/docs/screens; they are retained reference captures from
+ * local Cloud-app builds with fictional organisations and sample figures, not a claim that every screen
+ * has been recaptured against that commit. Refresh screenshots whenever the corresponding app screen changes.
  * The control a step points at is outlined in gold.
  *
  * In step and point text, **double asterisks** mark a label exactly as it appears in the app.
@@ -416,7 +416,7 @@ export const DOC_GUIDES: DocGuide[] = [
         where: ["Inventory", "Stock", "Stock on Hand"],
         roles: [...BOOKS, "auditor"],
         points: [
-          "**Stock on Hand** shows each item by warehouse, flags anything at or below its reorder level, and lists lots by expiry.",
+          "**Stock on Hand** shows each item by warehouse, flags anything at or below its reorder level, and lists lots by expiry. The **Show** filter starts at **Items in stock**; choose **Include zero balances** to include active tracked items that have no stock balance yet.",
           "**Inventory Reports** has valuation, movements, adjustments and variances, expiring stock, and orders outstanding. Each downloads as CSV or PDF.",
           "The valuation report puts the stock value beside the inventory account in the general ledger, with the difference.",
           "**Inventory Overview** reconciles the stock ledger with the general ledger for stock value and goods received not invoiced.",
@@ -496,6 +496,18 @@ export const DOC_GUIDES: DocGuide[] = [
         shots: [
           shot("payroll", "The Payroll Runs list", "Each run's period, employees, gross and net pay, and status."),
           shot("payroll-new", "The New Pay Run form", "Period, run type, the employees in scope and any one-off earnings."),
+        ],
+      },
+      {
+        id: "find-pay-runs",
+        title: "Find and filter pay runs",
+        where: ["Accounts", "Payroll", "Payroll Runs"],
+        roles: [...BOOKS, "auditor"],
+        points: [
+          "The summary cards count **Draft runs**, **Ready to post** and **Awaiting payment**. Select a card to filter the register to that group; select it again to clear that filter.",
+          "Use **Find a pay run** to search by frequency, period or status.",
+          "Use **Run status** to show one status, including **Awaiting payment**, or choose **All statuses**. **Clear filters** resets both search and status.",
+          "The register shows each run's period, frequency, employee count, gross and net totals, status and posting date. Gross and net are shown after the run is posted.",
         ],
       },
       {
