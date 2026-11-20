@@ -542,7 +542,8 @@ export const DOC_GUIDES: DocGuide[] = [
         steps: [
           "Choose **View** on a run to see every payslip, with gross pay, income tax and net pay.",
           "Choose **Show working** on a payslip to see how each figure was worked out. Outside Nigeria, it lists each of your country's lines in turn, and the rule set it used.",
-          "Choose **PDF** to download the payslip. Its delivery status shows beside the breakdown, with **Resend Payslip**.",
+          "On a posted or reversed run, choose **Print** beside an employee's payslip to open its individual print-ready page. Use your browser's print dialog to print it or save it as a PDF.",
+          "Choose **PDF** to download the payslip directly. Its delivery status shows beside the breakdown, with **Resend Payslip**.",
         ],
         note: "In Nigeria, PAYE is cumulative over the tax year. Plutus taxes the year-to-date chargeable income and subtracts the PAYE already withheld, so a pay rise or a missed month is handled properly.",
         shots: [
