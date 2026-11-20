@@ -252,10 +252,11 @@ export const DOC_GUIDES: DocGuide[] = [
           "Choose **New Fixed Asset** and say how it comes onto the books: bought now (paid from Cash and Bank), already owned before Plutus (an opening balance, with the depreciation it has built up), or leased (a right-of-use asset against a lease liability, with the lease term).",
           "Pick an **Asset Category** to fill in its usual depreciation, or choose **+ New Category** to make one.",
           "Choose the method: **Straight line** (a yearly rate of cost, or spread over the useful life), **Reducing balance** (the rate applied to net book value each year) or **Write off at once**.",
-          "At the end of the year, choose **Year-End Depreciation** and the year. Each asset is charged for the months it was held, dated 31 December, to the profit and loss account and to accumulated depreciation.",
+          "For regular monthly posting, choose **Run Monthly Depreciation**. Plutus posts one month's depreciation (or amortisation for leased assets) for every active asset, using each asset's method and rate.",
+          "For a year-end catch-up, choose **Year-End Depreciation** and the year. Plutus calculates the charge for the months each asset was held and dates the year-end posting 31 December.",
         ],
         points: [
-          "The year-end run charges each asset once a year, so running it again only picks up assets added since.",
+          "The register also offers **Depreciate** or **Amortise** for an individual active asset, and **Run Monthly Depreciation** for all active assets. The year-end action is a separate year-end calculation; use the monthly action for routine monthly postings.",
           "Leased assets have their own register, are amortised the same way, and take **Lease Payment** to reduce the lease liability.",
         ],
       },
@@ -292,11 +293,11 @@ export const DOC_GUIDES: DocGuide[] = [
         roles: BOOKS,
         intro: "Both statements are computed live from the general ledger, so they always match it.",
         steps: [
-          "For the profit and loss account, choose the **From** and **To** dates. It shows sales, less cost of sales, as gross profit, then less overheads, the net profit.",
+          "For the profit and loss account, choose the **From** and **To** dates. It shows sales less cost of sales as gross profit, adds other income, then deducts overheads to arrive at net profit or loss.",
           "For the balance sheet (under **Balance Sheet**), choose the **As at** date. It runs top to bottom: fixed assets, current assets, less current liabilities, net assets, then capital and reserves.",
           "Choose **PDF** to download either statement, or **Email** to send it.",
         ],
-        note: "The balance sheet always balances: the **Profit and Loss Reserve** in capital and reserves carries the profit or loss to date.",
+        note: "The **Profit and Loss Reserve** in capital and reserves carries the profit or loss to date. Depreciation and lease amortisation appear in the figures only after they have been posted from the Fixed Asset Register (monthly or by the year-end run). The balance sheet also reports fixed assets at cost less accumulated depreciation/amortisation; the asset-by-asset breakdown is in the register.",
         shots: [
           shot("financial-statements", "The Profit and Loss Account", "Sales, cost of sales and overheads by account for the dates you choose."),
           shot("balance-sheet", "The Balance Sheet", "Fixed assets first, then current assets and liabilities, then capital and reserves."),
