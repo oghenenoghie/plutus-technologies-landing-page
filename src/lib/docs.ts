@@ -310,6 +310,7 @@ export const DOC_GUIDES: DocGuide[] = [
         steps: [
           "Choose the date in **Lock the books up to**.",
           "Choose **Save lock date**. Nothing can then be posted on or before it: no journals, bills, invoices, payroll or inventory documents.",
+          "If you need to reopen a period, choose **Remove lock** and confirm. This removes the posting restriction, including for periods already reported, so use it only when authorised.",
         ],
         note: "Only a Super Admin or an Accountant can change the lock date. On the same page, **Statutory remittances** decides whether marking a statutory liability as remitted also posts the payment.",
         shots: [shot("accounting-settings", "The Accounting Settings page", "The lock date, and whether statutory remittances post to the ledger.")],
@@ -669,7 +670,7 @@ export const DOC_GUIDES: DocGuide[] = [
           "Under **Identity & Employment**, enter the employee number, full name, marital status, phone and residential address, state or region of residence, employment type and date of joining. Add their job title, manager and work location (add locations under **Branches** first).",
           "Under **Pay Components**, choose the pay frequency, then enter the basic, housing and transport pay and any other earnings for one pay period: for someone paid monthly, their monthly amounts.",
           "Under **Statutory & Compliance**, enter their tax ID, and the annual rent they pay for rent relief (it isn't an allowance). In Nigeria, add their pension fund administrator, RSA PIN and NHF number, and pension rates if your scheme pays more than the 8% and 10% minimums. Elsewhere, record their **Family shares (in halves)** and **Expatriate status** if your country's rules use them.",
-          "Choose **Create Employee**. To add many people at once, use **Bulk Import** and paste a CSV with the same columns.",
+          "Choose **Create Employee**. To add many people at once, choose **Bulk Import** and paste CSV text into **CSV Content**: include a header row using the New Employee form's field names and one row per employee. A bad row is skipped and reported; it does not stop valid rows from importing.",
         ],
         shots: [
           shot("employee-new", "The New Employee form", "Every field feeds TIN checks, PAYE, pension and NHF."),
@@ -687,7 +688,7 @@ export const DOC_GUIDES: DocGuide[] = [
           "Use **Edit Details** for changes and **Offboard** when they leave.",
         ],
         points: [
-          "**Mask Salary** on the Employees list hides an employee's pay from their manager.",
+          "**Mask Salary** on the Employees list hides an employee's pay from their manager. Super Admins and Payroll Managers can toggle this; the action changes to **Unmask Salary** while masking is on.",
           "**Bank Account** stores the account their net pay goes to.",
           "With a login, employees see their payslips, leave balance and requests, expenses, loans, benefits, attendance and documents.",
         ],
