@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PageIntro } from "@/components/page-intro";
+import { DocsSearch } from "@/components/docs/docs-search";
 import { sectionClass } from "@/components/section-head";
 import { ArrowIcon, ButtonLink } from "@/components/ui/button";
 import { DOC_GUIDES, guideCover } from "@/lib/docs";
@@ -33,6 +34,7 @@ export default function DocsPage() {
 
       <section aria-labelledby="guides-title" className={sectionClass}>
         <div className="wrap">
+          <DocsSearch guides={DOC_GUIDES} />
           <h2 id="guides-title" className="sr-only">
             Guides
           </h2>
