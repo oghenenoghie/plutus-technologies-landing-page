@@ -304,6 +304,24 @@ export const DOC_GUIDES: DocGuide[] = [
         ],
       },
       {
+        id: "vat-report",
+        title: "Monthly VAT Report",
+        where: ["Accounts", "Financial Information", "VAT Report"],
+        roles: [...BOOKS, "auditor"],
+        intro:
+          "The monthly VAT Report brings together VAT charged on customer invoices and VAT charged on vendor bills, then shows the net amount payable or refundable for the selected month.",
+        steps: [
+          "Open **VAT Report** under **Accounts → Financial Information**. The report defaults to the current month; use the **Month** selector to choose another month.",
+          "Review **Output VAT**: VAT charged on invoices sent in the selected month, less VAT reversed by credit notes issued in that month.",
+          "Review **Input VAT**: VAT charged on vendor bills approved in the selected month.",
+          "Compare the two figures in **Summary**. A positive net is **Net VAT payable**; a negative net is a VAT credit shown as **Net VAT refundable (credit)**; zero is shown as **Net VAT**.",
+          "Use the sales and purchases tables to review documents grouped by VAT treatment/rate, including standard-rated, other rates, zero-rated and exempt documents. The **Documents** table lists the date, type, number, customer or vendor, rate, net amount and VAT amount.",
+          "Choose **Print** for a print-ready report, or **PDF** to download the monthly VAT report.",
+        ],
+        note:
+          "Invoices count once sent (including invoices later marked paid); vendor bills count once approved (including bills later marked paid); credit notes count in the month they are issued. Draft invoices and draft bills are excluded and their counts are shown when present. The report follows each document's own date, not its payment date. It is a supporting schedule: check the figures against the tax authority's return before filing. The report currently offers print and PDF output; it does not provide an Excel export.",
+      },
+      {
         id: "lock-date",
         title: "Close a period with the lock date",
         where: ["Accounts", "Financial Information", "Accounting Settings"],
