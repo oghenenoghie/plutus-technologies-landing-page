@@ -12,7 +12,7 @@ type SearchResult = {
 };
 
 function normalise(value: string) {
-  return value.toLocaleLowerCase().normalize("NFKD").replace(/[\\u0300-\\u036f]/g, "").trim();
+  return value.toLocaleLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").trim();
 }
 
 export function DocsSearch({ guides }: { guides: DocGuide[] }) {
